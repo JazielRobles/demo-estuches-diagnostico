@@ -4,7 +4,7 @@
 .list-grid{display:grid;grid-template-columns:1fr 340px;gap:55px;align-items:start}
 .list-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding-bottom:18px}
 .list-heading h2{font-size:30px;letter-spacing:-.04em;margin:0}
-.list-heading h2 small{font-family:"DM Sans",Arial,sans-serif;font-size:13px;color:#99a798}
+.list-heading h2 small{font-family:"Plus Jakarta Sans",Arial,sans-serif;font-size:13px;color:#99a798}
 .list-heading a{font-size:11px;font-weight:700;color:var(--forest)}
 .list-item{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
 .list-item-art{display:block;width:125px;height:130px;overflow:hidden;border-radius:6px}

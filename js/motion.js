@@ -74,5 +74,51 @@
     if(document.hidden)document.documentElement.dataset.motionPaused="true";
     else delete document.documentElement.dataset.motionPaused;
   });
+
+  const finePointer=matchMedia("(hover: hover) and (pointer: fine)");
+  let pointerFrame=0;
+  let pendingPointer=null;
+  function applyPointer(){
+    const current=pendingPointer;
+    pointerFrame=0;
+    if(!current)return;
+    const target=current.card||current.button;
+    if(!target.isConnected)return;
+    const rect=target.getBoundingClientRect();
+    const x=Math.max(-.5,Math.min(.5,(current.x-rect.left)/rect.width-.5));
+    const y=Math.max(-.5,Math.min(.5,(current.y-rect.top)/rect.height-.5));
+    if(current.card){
+      target.style.setProperty("--tilt-x",(-y*4)+"deg");
+      target.style.setProperty("--tilt-y",(x*4)+"deg");
+      target.style.setProperty("--photo-x",(x*12)+"px");
+      target.style.setProperty("--photo-y",(y*12)+"px");
+    }else{
+      target.style.setProperty("--magnet-x",(x*10)+"px");
+      target.style.setProperty("--magnet-y",(y*7)+"px");
+    }
+  }
+  document.addEventListener("pointermove",(event)=>{
+    if(preference.matches||!finePointer.matches||!(event.target instanceof Element))return;
+    const card=event.target.closest(".product-card");
+    const button=card?null:event.target.closest(".button:not(:disabled)");
+    if(!card&&!button)return;
+    pendingPointer={card,button,x:event.clientX,y:event.clientY};
+    if(!pointerFrame)pointerFrame=setTimeout(applyPointer,16);
+  },{passive:true});
+  document.addEventListener("pointerout",(event)=>{
+    if(!(event.target instanceof Element))return;
+    const next=event.relatedTarget;
+    const card=event.target.closest(".product-card");
+    if(card&&!(next instanceof Node&&card.contains(next))){
+      if(pendingPointer?.card===card){pendingPointer=null;clearTimeout(pointerFrame);pointerFrame=0}
+      ["--tilt-x","--tilt-y","--photo-x","--photo-y"].forEach((name)=>card.style.removeProperty(name));
+    }
+    const button=event.target.closest(".button");
+    if(button&&!(next instanceof Node&&button.contains(next))){
+      if(pendingPointer?.button===button){pendingPointer=null;clearTimeout(pointerFrame);pointerFrame=0}
+      button.style.removeProperty("--magnet-x");
+      button.style.removeProperty("--magnet-y");
+    }
+  });
   start();
 })();

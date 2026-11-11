@@ -14,6 +14,8 @@ Los estilos comunes están en `css/base.css`, la dirección visual azul en `css/
 
 Las tarjetas permanecen visibles aunque una animación no se ejecute; los movimientos respetan la preferencia del sistema de reducir movimiento y los fondos animados de las tarjetas se pausan fuera de pantalla.
 
+La tipografía combina Plus Jakarta Sans para lectura y controles con DM Serif Display para titulares. Los efectos de cursor se limitan a dispositivos con mouse y se actualizan en intervalos cortos.
+
 ## Contenido pendiente
 
 Logo, productos, fotografías, descripciones, precios, disponibilidad y contacto deben sustituirse con los materiales aprobados por el cliente. Los registros `demo-01` a `demo-08` son únicamente muestras de interfaz. Esta versión no procesa pagos ni envía pedidos.
