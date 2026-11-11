@@ -1,0 +1,51 @@
+.product-breadcrumb-wrap{padding-top:30px}
+.product-breadcrumb-wrap .breadcrumbs{margin-bottom:25px}
+.detail-section{padding:0 0 86px}
+.detail-grid{display:grid;grid-template-columns:1fr .88fr;gap:75px;align-items:start}
+.detail-gallery{position:sticky;top:103px}
+.detail-gallery>.product-art,#main-product-art>.product-art{height:505px;border-radius:9px}
+.detail-art .case-illustration{transform:scale(1.65) rotate(-8deg)}
+.detail-art .art-halo{width:360px;height:360px;top:65px}
+.detail-art .art-note{bottom:19px;right:20px}
+.gallery-thumbs{display:flex;gap:10px;margin-top:12px}
+.gallery-thumbs button{width:88px;height:88px;padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;background:transparent}
+.gallery-thumbs button.active{border-color:var(--forest)}
+.gallery-thumbs .product-art{height:84px;width:84px}
+.gallery-thumbs .case-illustration{transform:scale(.42) rotate(-8deg)}
+.gallery-thumbs .art-halo,.gallery-thumbs .art-note{display:none}
+.gallery-note{font-size:10px;color:#8d9c8d;display:block;margin-top:12px}
+.detail-info{padding-top:13px}
+.detail-info h1{font-size:clamp(42px,4.5vw,60px);letter-spacing:-.05em;line-height:1.1;margin:16px 0}
+.detail-lead{font-size:13px;line-height:1.8;color:var(--muted);margin:0 0 27px}
+.detail-price{padding:18px 0 21px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:3px}
+.detail-price span{font-size:11px;color:var(--muted)}
+.detail-price strong{font-family:var(--display);font-weight:500;color:var(--forest);font-size:28px;grid-column:1/-1}
+.detail-price small{font-size:10px;color:#98a598;grid-column:1/-1}
+.detail-points{padding:20px 0;color:#536d58;font-size:11px}
+.detail-points div{display:flex;align-items:center;gap:10px;margin:10px 0}
+.detail-points span{width:21px;height:21px;border-radius:50%;display:grid;place-items:center;background:#e8f0e5;color:var(--forest);font-size:11px}
+.purchase-actions{display:flex;align-items:center;gap:10px}
+.quantity-control.large{height:52px}
+.quantity-control.large button{height:50px;width:35px}
+.quantity-control.large span{min-width:25px}
+.purchase-actions .button{flex:1}
+.detail-favorite{width:52px;height:52px;border-radius:5px}
+.detail-favorite.active{background:#f6ece8;color:#b96d69}
+.detail-favorite.active .icon{fill:#f1d1cd}
+.detail-note{font-size:10px;color:#9ba99c;margin:13px 0 28px}
+.detail-accordions{border-top:1px solid var(--line)}
+.detail-accordions details{border-bottom:1px solid var(--line);padding:16px 0}
+.detail-accordions summary{list-style:none;display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;cursor:pointer}
+.detail-accordions summary::-webkit-details-marker{display:none}
+.detail-accordions summary span{font-size:20px;font-weight:400;color:var(--sage)}
+.detail-accordions details[open] summary span{transform:rotate(45deg)}
+.detail-accordions details p{font-size:11px;line-height:1.75;color:var(--muted);margin:11px 0 0}
+.related-section{background:var(--cream)}
+.not-found{padding:90px 0 120px;min-height:420px}
+.not-found h1{font-size:52px;margin:15px 0}
+.not-found p{font-size:13px;color:var(--muted);margin:0 0 25px}
+@media(max-width:1000px){.detail-grid{gap:40px}.detail-gallery>.product-art,#main-product-art>.product-art{height:440px}.detail-art .case-illustration{transform:scale(1.35) rotate(-8deg)}}
+@media(max-width:800px){.detail-grid{grid-template-columns:1fr;gap:30px}.detail-gallery{position:static}.detail-gallery>.product-art,#main-product-art>.product-art{height:480px}.detail-art .case-illustration{transform:scale(1.55) rotate(-8deg)}.detail-info{padding-top:0}}
+@media(max-width:620px){.detail-section{padding-bottom:65px}.detail-gallery>.product-art,#main-product-art>.product-art{height:350px}.detail-art .case-illustration{transform:scale(1.2) rotate(-8deg)}.detail-art .art-halo{width:290px;height:290px;top:30px}.detail-info h1{font-size:43px}.purchase-actions{flex-wrap:wrap}.purchase-actions .button{min-width:55%}}
+@media(max-width:390px){.detail-gallery>.product-art,#main-product-art>.product-art{height:300px}.detail-info h1{font-size:38px}.purchase-actions .button{order:3;flex-basis:100%}}
+.gallery-thumbs .detail-art .case-illustration{position:absolute;left:50%;top:50%;margin-left:-69px;margin-top:-82px;transform:scale(.4) rotate(-8deg)}

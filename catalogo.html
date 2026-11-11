@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f6f1"><meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Explora una vista previa del catálogo de estuches de diagnóstico.">
+  <title>Catálogo | Tu marca · Equipamiento médico</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/catalogo.css">
+</head>
+<body data-page="catalog">
+  <div id="site-header"></div>
+  <main>
+    <section class="page-intro catalog-intro"><div class="container"><nav class="breadcrumbs" aria-label="Ruta"><a href="index.html">Inicio</a><span>/</span><span>Catálogo</span></nav><div class="intro-layout"><div><span class="eyebrow">ESTUCHES DE DIAGNÓSTICO</span><h1>Encuentra lo que va <em>contigo.</em></h1><p>Explora, filtra y compara opciones con una vista diseñada para ayudarte a decidir sin prisa.</p></div><span class="intro-flower" aria-hidden="true">✳</span></div></div></section>
+    <section class="catalog-section"><div class="container">
+      <div class="catalog-top"><div><span class="eyebrow">NUESTRO CATÁLOGO</span><h2>Explora la colección</h2></div><p>Tarjetas de muestra. El cliente proporcionará las fotografías, modelos y precios definitivos.</p></div>
+      <div class="catalog-layout">
+        <aside class="filter-panel" id="filter-panel" aria-label="Filtros del catálogo">
+          <div class="filter-head"><h3>Filtrar</h3><button class="round-button filter-close" id="close-filters" type="button" aria-label="Cerrar filtros">×</button></div>
+          <fieldset class="filter-group"><legend>Etapa</legend><label class="filter-option"><input type="radio" name="category" value="all" checked><span>Todos los estuches</span><small>08</small></label><label class="filter-option"><input type="radio" name="category" value="Estudiantes"><span>Para estudiantes</span><small>04</small></label><label class="filter-option"><input type="radio" name="category" value="Profesionales"><span>Para profesionales</span><small>04</small></label></fieldset>
+          <fieldset class="filter-group"><legend>Tecnología</legend><label class="filter-option"><input type="checkbox" name="technology" value="LED"><span>LED</span><small>05</small></label><label class="filter-option"><input type="checkbox" name="technology" value="Halógeno"><span>Halógeno</span><small>03</small></label></fieldset>
+          <fieldset class="filter-group"><legend>Mi colección</legend><label class="filter-option"><input type="checkbox" id="favorites-only"><span>Solo favoritos</span></label></fieldset>
+          <button class="clear-filters" id="clear-filters" type="button">Limpiar filtros <span aria-hidden="true">↗</span></button>
+          <div class="filter-help"><span>✳</span><p>¿No sabes por dónde empezar?</p><a href="guia.html">Visita la guía de compra →</a></div>
+        </aside>
+        <div class="catalog-main">
+          <div class="catalog-toolbar"><span id="result-count" aria-live="polite">8 productos de muestra</span><div><label class="search-box"><span class="search-symbol">⌕</span><input id="search-input" type="search" placeholder="Buscar en el catálogo" aria-label="Buscar en el catálogo"></label><label class="sort-box"><select id="sort-select" aria-label="Ordenar productos"><option value="default">Destacados</option><option value="az">Nombre A–Z</option><option value="za">Nombre Z–A</option></select><span aria-hidden="true">⌄</span></label><button id="open-filters" class="mobile-filter-button" type="button">Filtros <span aria-hidden="true">☷</span></button></div></div>
+          <div id="active-filters" class="active-filters" aria-live="polite"></div>
+          <div class="product-grid" id="product-grid"></div>
+          <div class="empty-state" id="empty-state" hidden><span>⌕</span><h3>No encontramos resultados</h3><p>Prueba otra búsqueda o cambia los filtros.</p><button class="button button-primary" id="empty-reset" type="button">Ver todo el catálogo <span aria-hidden="true">↗</span></button></div>
+          <p class="catalog-note">* Contenido visual de demostración. No hay productos ni precios reales publicados.</p>
+        </div>
+      </div>
+    </div></section>
+  </main>
+  <div id="site-footer"></div>
+  <div class="filter-overlay" id="filter-overlay" hidden></div>
+  <div class="compare-bar" id="compare-bar" hidden><div class="container compare-bar-inner"><div><span>MI COMPARACIÓN</span><strong id="compare-count">0 opciones</strong></div><div id="compare-chips" class="compare-chips"></div><button id="clear-compare" class="compare-clear" type="button">Limpiar</button><button id="open-compare" class="button button-primary" type="button">Comparar <span aria-hidden="true">↗</span></button></div></div>
+  <dialog id="compare-dialog" class="compare-dialog" aria-labelledby="compare-title"><button id="close-compare" class="round-button dialog-close" type="button" aria-label="Cerrar comparación">×</button><span class="eyebrow">COMPARA CON CALMA</span><h2 id="compare-title">Tus opciones, lado a lado.</h2><p>Los datos son de muestra hasta recibir el catálogo definitivo.</p><div class="compare-table-wrap"><table id="compare-table"></table></div></dialog>
+  <script src="js/data.js" defer></script><script src="js/site.js" defer></script><script src="js/catalogo.js" defer></script>
+</body>
+</html>

@@ -1,12 +1,19 @@
-# Estuches de diagnóstico — plantilla de tienda
+# Tienda médica — vista previa multipágina
 
-Vista previa de diseño minimalista para un catálogo médico. La página incluye navegación móvil, búsqueda, filtros, favoritos, fichas rápidas, comparación de hasta tres opciones y una lista de interés con cantidades y copia al portapapeles. Las animaciones respetan la preferencia de movimiento reducido.
+Demo de una tienda de estuches de diagnóstico, diseñada para mostrar una experiencia completa antes de recibir la identidad y el catálogo del cliente.
 
-## Contenido provisional
+## Páginas
 
-- El encabezado muestra **TU MARCA / LOGO PENDIENTE**.
-- Los seis registros de `sampleProducts` en `app.js` son muestras de interfaz, no productos reales.
-- No hay fotos ni precios reales. Las tarjetas muestran espacios reservados.
-- La página no procesa pagos ni envía mensajes. El canal de contacto se conectará cuando el cliente proporcione sus datos.
+- `index.html`: portada, categorías y selección destacada.
+- `catalogo.html`: búsqueda, filtros, favoritos y comparación.
+- `producto.html?id=demo-01`: ficha de producto con galería de muestra, cantidad y detalles.
+- `guia.html`: guía con selector interactivo y preguntas frecuentes.
+- `lista.html`: selección persistente, edición de cantidades y copia al portapapeles.
 
-Para personalizar: sustituir el logo en `index.html`, cargar las fotos, reemplazar los registros de muestra en `app.js` y conectar precios, disponibilidad y contacto. Abrir `index.html` para una revisión local.
+Los estilos comunes están en `css/base.css`; cada página carga solo su CSS y su JavaScript. Los datos de muestra están en `js/data.js` y las funciones compartidas en `js/site.js`. No se usan librerías de interfaz.
+
+## Contenido pendiente
+
+Logo, productos, fotografías, descripciones, precios, disponibilidad y contacto deben sustituirse con los materiales aprobados por el cliente. Los registros `demo-01` a `demo-08` son únicamente muestras de interfaz. Esta versión no procesa pagos ni envía pedidos.
+
+Abrir `index.html` en el navegador para revisión local.

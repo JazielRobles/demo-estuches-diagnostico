@@ -1,0 +1,48 @@
+.guide-hero{background:#eaf0e8;overflow:hidden}
+.guide-hero-grid{display:grid;grid-template-columns:1fr .8fr;align-items:center;gap:85px}
+.guide-hero h1{max-width:690px}
+.guide-hero p{margin-bottom:29px}
+.guide-art{height:390px;position:relative;display:grid;place-items:center}
+.guide-art-circle{position:absolute;width:375px;height:375px;border-radius:50%;background:#dae6d9;right:5px;top:0}
+.guide-art-circle::before{content:"";position:absolute;inset:45px;border:1px solid #c4d9c5;border-radius:50%}
+.guide-art-card{position:relative;z-index:1;width:245px;background:#fff;border-radius:7px;box-shadow:20px 24px 35px rgba(45,80,50,.12);transform:rotate(-7deg);padding:26px 28px;display:grid;grid-template-columns:35px 1fr;align-items:center;gap:9px}
+.guide-art-card span{font-family:var(--display);color:var(--clay);font-size:23px}
+.guide-art-card strong{font-family:var(--display);font-weight:500;font-size:23px}
+.guide-art-card i{grid-column:1/-1;height:1px;background:var(--line)}
+.guide-art-caption{position:absolute;bottom:0;right:5px;font-size:10px;color:#819984}
+.principle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.principle-card{background:var(--cream);border:1px solid #eeede6;border-radius:8px;padding:26px;min-height:228px;transition:transform .25s,box-shadow .25s}
+.principle-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.principle-card>span{font-size:9px;color:var(--clay);font-weight:700;letter-spacing:.12em}
+.principle-card h3{font-size:25px;margin:42px 0 9px}
+.principle-card p{font-size:11px;line-height:1.75;color:var(--muted);margin:0}
+.selector-section{background:#f5f4ec}
+.selector-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:78px;align-items:center}
+.selector-copy h2{font-size:clamp(38px,4vw,54px);letter-spacing:-.05em;line-height:1.12;margin:15px 0}
+.selector-copy p{color:var(--muted);font-size:13px;line-height:1.8;max-width:350px}
+.selector-mark{font-family:var(--display);font-size:130px;color:#e4e9db;line-height:1;margin-top:23px}
+.selector-card{background:#fff;border:1px solid var(--line);border-radius:9px;padding:30px;box-shadow:0 12px 30px rgba(40,65,45,.05)}
+.selector-card fieldset{border:0;padding:0;margin:0 0 27px}
+.selector-card legend{font-size:12px;font-weight:700;margin-bottom:13px}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.tech-choices{grid-template-columns:repeat(3,1fr)}
+.choice{text-align:left;background:#fafaf7;border:1px solid #e6e9e0;border-radius:6px;padding:13px;min-height:72px;transition:border-color .2s,background .2s,transform .2s}
+.choice:hover{transform:translateY(-2px);border-color:#b3c9b3}
+.choice.active{border-color:var(--forest);background:#f0f5ec;box-shadow:inset 0 0 0 1px var(--forest)}
+.choice strong{font-size:11px;display:block;color:var(--forest-deep)}
+.choice span{display:block;font-size:9px;color:#8d9e8e;margin-top:5px}
+.selector-result{border-top:1px solid var(--line);padding-top:21px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.selector-result>span{font-size:10px;color:var(--muted)}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:85px}
+.faq-grid h2{font-size:clamp(38px,4vw,52px);line-height:1.14;letter-spacing:-.05em;margin:16px 0}
+.faq-grid>div:first-child>p{font-size:12px;line-height:1.7;color:var(--muted)}
+.faq-list{border-top:1px solid var(--line)}
+.faq-list details{border-bottom:1px solid var(--line);padding:20px 0}
+.faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:15px;font-size:12px;font-weight:700}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary span{font-size:20px;font-weight:400;color:var(--sage)}
+.faq-list details[open] summary span{transform:rotate(45deg)}
+.faq-list p{font-size:11px;color:var(--muted);line-height:1.8;margin:13px 30px 0 0}
+@media(max-width:1050px){.guide-hero-grid{gap:40px}.selector-grid{gap:40px}.faq-grid{gap:40px}}
+@media(max-width:800px){.guide-hero-grid{grid-template-columns:1fr}.guide-art{height:315px}.guide-art-circle{left:50%;right:auto;transform:translateX(-50%);width:300px;height:300px}.guide-art-caption{right:15%}.selector-grid,.faq-grid{grid-template-columns:1fr}.selector-mark{display:none}}
+@media(max-width:620px){.principle-grid{grid-template-columns:1fr}.principle-card{min-height:170px}.principle-card h3{margin-top:25px}.selector-card{padding:20px}.choice-grid,.tech-choices{grid-template-columns:1fr}.choice{min-height:60px}.selector-result{flex-direction:column;align-items:flex-start}.selector-result .button{width:100%}.guide-hero h1{font-size:43px}.guide-art{height:285px}}
