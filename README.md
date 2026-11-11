@@ -10,7 +10,9 @@ Demo de una tienda de estuches de diagnóstico, diseñada para mostrar una exper
 - `guia.html`: guía con selector interactivo y preguntas frecuentes.
 - `lista.html`: selección persistente, edición de cantidades y copia al portapapeles.
 
-Los estilos comunes están en `css/base.css` y la dirección visual azul en `css/refresh.css`; cada página carga además su CSS y su JavaScript específicos. Los datos de muestra están en `js/data.js` y las funciones compartidas en `js/site.js`. No se usan librerías de interfaz.
+Los estilos comunes están en `css/base.css`, la dirección visual azul en `css/refresh.css` y los movimientos en `css/motion.css`. Cada página carga además su CSS y JavaScript específicos. Los datos de muestra están en `js/data.js`; las funciones compartidas y los efectos al desplazarse están en `js/site.js` y `js/motion.js`. No se usan librerías de interfaz.
+
+Las tarjetas permanecen visibles aunque una animación no se ejecute; los movimientos respetan la preferencia del sistema de reducir movimiento y los fondos animados de las tarjetas se pausan fuera de pantalla.
 
 ## Contenido pendiente
 

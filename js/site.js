@@ -126,9 +126,17 @@
   function initMotion(){
     if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
     if(!("IntersectionObserver" in window))return;
-    document.documentElement.classList.add("has-motion");
     const observer=new IntersectionObserver((entries)=>{
-      entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}});
+      entries.forEach((entry)=>{
+        if(!entry.isIntersecting)return;
+        const target=entry.target;
+        target.classList.add("is-visible");
+        if(target.animate)target.animate([
+          {transform:"translate3d(0,18px,0)"},
+          {transform:"translate3d(0,0,0)"}
+        ],{duration:680,easing:"cubic-bezier(.2,.7,.2,1)"});
+        observer.unobserve(target);
+      });
     },{threshold:.08,rootMargin:"0px 0px 30px 0px"});
     $$(".reveal").forEach((node)=>observer.observe(node));
   }

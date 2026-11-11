@@ -86,7 +86,7 @@ h1 em,h2 em{color:#147caf}
 .product-art.tone-blue{background:radial-gradient(circle at 80% 10%,#83d2e6,transparent 42%),linear-gradient(135deg,#397bac,#205080);color:#fff}
 .product-art::after{display:none}
 .photo-index{position:absolute;top:18px;left:20px;font-size:10px;font-weight:800;letter-spacing:.16em;opacity:.8}
-.photo-frame{position:absolute;inset:43px 21px 40px;border:1px solid currentColor;border-radius:12px;padding:18px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;z-index:1;background:rgba(255,255,255,.07);backdrop-filter:blur(2px);transition:transform .45s,background .45s}
+.photo-frame{position:absolute;inset:43px 21px 40px;border:1px solid currentColor;border-radius:12px;padding:18px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;z-index:1;background:rgba(255,255,255,.07);transition:transform .45s,background .45s}
 .product-card:hover .photo-frame{transform:scale(1.035);background:rgba(255,255,255,.14)}
 .photo-frame span{font-size:10px;font-weight:800;letter-spacing:.2em;opacity:.82}
 .photo-frame strong{display:block;font-family:var(--display);font-size:clamp(24px,2.2vw,32px);line-height:1.06;letter-spacing:-.045em;font-weight:500;margin:9px 0}
