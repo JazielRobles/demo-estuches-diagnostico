@@ -1,171 +1,310 @@
-const products = [
-  {id:"WA95001",name:"Estuche de diagnóstico Pocket Jr 2.5V",short:"Pocket Jr 2.5V",category:"Estudiantes",technology:"Halógeno",price:5090,oldPrice:5790,image:"pocket-jr.png",color:"Negro",description:"Un equipo compacto y ligero para comenzar a explorar con seguridad.",features:["Otoscopio y oftalmoscopio Pocket Jr","Dos mangos incluidos","Estuche suave para transportarlo"]},
-  {id:"WA92871BLK",name:"Estuche de diagnóstico Pocket LED Onix",short:"Pocket LED Onix",category:"Estudiantes",technology:"LED",price:5390,oldPrice:6290,image:"pocket-onix.png",color:"Onix",description:"Instrumentos de bolsillo con iluminación LED para acompañarte desde la formación hasta la consulta.",features:["Iluminación LED SureColor","Otoscopio y oftalmoscopio de bolsillo","Mangos, espéculos y estuche suave"]},
-  {id:"WA92871PUR",name:"Estuche de diagnóstico Pocket LED Violeta",short:"Pocket LED Violeta",category:"Estudiantes",technology:"LED",price:5390,oldPrice:6290,image:"pocket-violeta.png",color:"Violeta",description:"La practicidad de la línea Pocket LED en una variante con personalidad.",features:["Iluminación LED","Otoscopio y oftalmoscopio","Mangos y estuche suave"]},
-  {id:"WA92871WHI",name:"Estuche de diagnóstico Pocket LED Nieve",short:"Pocket LED Nieve",category:"Estudiantes",technology:"LED",price:5390,oldPrice:6290,image:"pocket-blanco.png",color:"Nieve",description:"Diseño compacto y luz LED para una exploración cómoda y precisa.",features:["Iluminación LED","Formato ligero y portátil","Estuche suave incluido"]},
-  {id:"WA92871BLU",name:"Estuche de diagnóstico Pocket LED Azul",short:"Pocket LED Azul",category:"Estudiantes",technology:"LED",price:5390,oldPrice:6290,image:"pocket-azul.png",color:"Azul",description:"Una opción portátil para llevar tus instrumentos esenciales a todas partes.",features:["Iluminación LED","Otoscopio y oftalmoscopio","Mangos y estuche suave"]},
-  {id:"WA92880BLK",name:"Estuche de diagnóstico Pocket LED Plus Onix",short:"Pocket LED Plus Onix",category:"Estudiantes",technology:"LED",price:6490,oldPrice:7390,image:"plus-onix.png",color:"Onix",description:"La línea Pocket LED Plus para quienes buscan ampliar su equipo de exploración.",features:["Tecnología LED","Otoscopio y oftalmoscopio","Estuche de transporte"]},
-  {id:"WA92880PUR",name:"Estuche de diagnóstico Pocket LED Plus Violeta",short:"Pocket LED Plus Violeta",category:"Estudiantes",technology:"LED",price:6490,oldPrice:7390,image:"plus-violeta.png",color:"Violeta",description:"Un kit de bolsillo versátil con acabado violeta.",features:["Tecnología LED","Diseño de bolsillo","Estuche de transporte"]},
-  {id:"WA92880BLU",name:"Estuche de diagnóstico Pocket LED Plus Azul",short:"Pocket LED Plus Azul",category:"Estudiantes",technology:"LED",price:6490,oldPrice:7390,image:"plus-azul.png",color:"Azul",description:"Diseñado para acompañarte en exploraciones frecuentes.",features:["Tecnología LED","Otoscopio y oftalmoscopio","Estuche de transporte"]},
-  {id:"WA97200-MC",name:"MacroView con oftalmoscopio Coaxial y estuche",short:"MacroView + Coaxial",category:"Profesionales",technology:"Halógeno",price:17190,oldPrice:null,image:"macroview.png",color:"Negro",description:"Una combinación profesional de otoscopio MacroView y oftalmoscopio Coaxial.",features:["Otoscopio MacroView","Oftalmoscopio Coaxial","Mango recargable y estuche rígido"]},
-  {id:"WA97200-C",name:"Estuche recargable de Halógeno 3.5V",short:"Recargable Halógeno 3.5V",category:"Profesionales",technology:"Halógeno",price:7690,oldPrice:9090,image:"recargable.png",color:"Negro",description:"Un sistema recargable para el uso continuo en la práctica clínica.",features:["Iluminación halógena 3.5V","Mango recargable","Estuche rígido"]},
-  {id:"WA97200-CL",name:"Estuche de diagnóstico recargable LED 3.5V",short:"Recargable LED 3.5V",category:"Profesionales",technology:"LED",price:9690,oldPrice:11590,image:"halogeno.png",color:"Negro",description:"Equipo profesional recargable con tecnología LED.",features:["Iluminación LED 3.5V","Sistema recargable","Estuche de transporte"]},
-  {id:"WA97210-C",name:"Estuche recargable con iluminador nasal 3.5V",short:"Recargable + iluminador nasal",category:"Profesionales",technology:"Halógeno",price:9590,oldPrice:11490,image:"nasal.png",color:"Negro",description:"Un equipo de exploración más completo para consulta profesional.",features:["Iluminación halógena 3.5V","Iluminador nasal incluido","Sistema recargable"]}
+// Replace these clearly marked sample records when the client provides the catalog.
+const sampleProducts = [
+  {id:"DEMO-01",name:"Producto de muestra 01",category:"Estudiantes",technology:"LED",tone:"sage"},
+  {id:"DEMO-02",name:"Producto de muestra 02",category:"Estudiantes",technology:"Halógeno",tone:"blue"},
+  {id:"DEMO-03",name:"Producto de muestra 03",category:"Profesionales",technology:"LED",tone:"sand"},
+  {id:"DEMO-04",name:"Producto de muestra 04",category:"Profesionales",technology:"Halógeno",tone:"lavender"},
+  {id:"DEMO-05",name:"Producto de muestra 05",category:"Estudiantes",technology:"LED",tone:"ice"},
+  {id:"DEMO-06",name:"Producto de muestra 06",category:"Profesionales",technology:"LED",tone:"mint"}
 ];
 
-const $ = (s) => document.querySelector(s);
-const $$ = (s) => [...document.querySelectorAll(s)];
-const money = (value) => new Intl.NumberFormat("es-MX",{style:"currency",currency:"MXN",maximumFractionDigits:0}).format(value);
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => [...document.querySelectorAll(selector)];
 const icon = (name) => '<svg class="icon" aria-hidden="true"><use href="#i-'+name+'"/></svg>';
-const image = (product) => "assets/" + product.image;
-const escapeHTML = (value) => String(value).replace(/[&<>"']/g,(char)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
-const store = {
-  read(key,fallback){try{return JSON.parse(localStorage.getItem(key)) ?? fallback}catch{return fallback}},
+const esc = (value) => String(value).replace(/[&<>"']/g,(char)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+const normalize = (value) => String(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+const productById = (id) => sampleProducts.find((product)=>product.id===id);
+const storage = {
+  read(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}},
   write(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch{}}
 };
-const state = {category:"all",search:"",technology:new Set(),maxPrice:25000,saleOnly:false,sort:"featured",favorites:new Set(store.read("pulso-favorites",[])),cart:store.read("pulso-cart",{})};
-let lastFocused = null;
-let toastTimer;
-const normalize = (value) => value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-const productById = (id) => products.find((item) => item.id === id);
-const cartQuantity = () => Object.values(state.cart).reduce((total,quantity) => total + quantity,0);
+const storedCart = storage.read("dx-demo-cart",{});
+const state = {
+  category:"all",technology:new Set(),search:"",sort:"default",onlyFavorites:false,
+  favorites:new Set(storage.read("dx-demo-favorites",[]).filter((id)=>productById(id))),
+  compare:new Set(storage.read("dx-demo-compare",[]).filter((id)=>productById(id)).slice(0,3)),
+  cart:Object.fromEntries(Object.entries(storedCart).filter(([id,qty])=>productById(id)&&Number.isInteger(qty)&&qty>0))
+};
+let activePanel=null;
+let previousFocus=null;
+let toastTimer=null;
+const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function renderProducts(){
-  let list = products.filter((p) => {
-    const text = normalize(p.name+" "+p.id+" "+p.color+" "+p.technology);
-    return (state.category==="all" || p.category===state.category)
-      && (!state.search || text.includes(normalize(state.search)))
-      && (!state.technology.size || state.technology.has(p.technology))
-      && p.price <= state.maxPrice
-      && (!state.saleOnly || !!p.oldPrice);
+function notify(message){
+  const node=$("#toast");
+  node.textContent=message;
+  node.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>node.classList.remove("show"),3000);
+}
+
+function filteredProducts(){
+  const list=sampleProducts.filter((product)=>{
+    const text=normalize(product.name+" "+product.id+" "+product.category+" "+product.technology);
+    return (state.category==="all"||product.category===state.category)
+      && (!state.technology.size||state.technology.has(product.technology))
+      && (!state.search||text.includes(normalize(state.search)))
+      && (!state.onlyFavorites||state.favorites.has(product.id));
   });
-  if(state.sort==="price-asc") list.sort((a,b)=>a.price-b.price);
-  if(state.sort==="price-desc") list.sort((a,b)=>b.price-a.price);
-  if(state.sort==="name") list.sort((a,b)=>a.name.localeCompare(b.name,"es"));
-  $("#result-count").textContent = "Mostrando " + list.length + " de " + products.length + " estuches";
-  $("#empty-state").hidden = list.length>0;
-  $("#product-grid").innerHTML = list.map((p) => `
-    <article class="product-card">
-      <div class="product-image">
-        ${p.oldPrice ? '<span class="product-badge">OFERTA</span>' : '<span class="product-badge new">PROFESIONAL</span>'}
-        <button type="button" class="favorite ${state.favorites.has(p.id)?"active":""}" data-favorite="${p.id}" aria-label="${state.favorites.has(p.id)?"Quitar de":"Añadir a"} favoritos: ${p.short}" aria-pressed="${state.favorites.has(p.id)}">${icon("heart")}</button>
-        <img src="${image(p)}" alt="${p.name}" loading="lazy">
+  if(state.sort==="az")list.sort((a,b)=>a.name.localeCompare(b.name,"es"));
+  if(state.sort==="za")list.sort((a,b)=>b.name.localeCompare(a.name,"es"));
+  return list;
+}
+
+function renderCatalog(){
+  const list=filteredProducts();
+  $("#result-label").textContent="Mostrando "+list.length+" de "+sampleProducts.length+" elementos";
+  $("#empty-state").hidden=list.length>0;
+  $("#product-grid").innerHTML=list.map((p)=>`
+    <article class="product-card" data-id="${p.id}">
+      <div class="product-art" data-tone="${p.tone}">
+        <span class="art-corner">${p.id}</span>
+        <span class="art-symbol">${icon("image")}</span>
+        <span class="art-label">IMAGEN PENDIENTE</span>
+        <button type="button" class="art-view" data-view="${p.id}" aria-label="Ver detalle de ${p.name}">${icon("eye")}</button>
       </div>
-      <div class="product-body">
-        <div class="product-meta"><span>${p.id}</span><span>${p.technology}</span></div>
-        <h3>${p.name}</h3><p class="product-subtitle">${p.category} · ${p.color}</p>
-        <div class="price-line"><strong>${money(p.price)}</strong>${p.oldPrice ? "<del>"+money(p.oldPrice)+"</del>" : ""}</div>
-        <div class="product-actions"><button class="add-button" type="button" data-add="${p.id}">Añadir a selección ${icon("arrow")}</button><button class="quick-view" type="button" data-view="${p.id}" aria-label="Ver detalles de ${p.short}">${icon("eye")}</button></div>
+      <div class="product-info">
+        <div class="product-meta"><span>${p.category.toUpperCase()}</span><span>${p.technology}</span></div>
+        <h3>${p.name}</h3><p>Nombre y detalles editables</p>
+        <div class="product-price"><span>PRECIO PENDIENTE</span><button type="button" class="${state.favorites.has(p.id)?"active":""}" data-favorite="${p.id}" aria-label="${state.favorites.has(p.id)?"Quitar de":"Añadir a"} favoritos: ${p.name}" aria-pressed="${state.favorites.has(p.id)}">${icon("heart")}</button></div>
+        <div class="product-actions"><button type="button" class="product-add" data-add="${p.id}">Añadir a mi lista ${icon("arrow")}</button><button type="button" class="product-compare ${state.compare.has(p.id)?"active":""}" data-compare="${p.id}" aria-label="${state.compare.has(p.id)?"Quitar de":"Añadir a"} comparación: ${p.name}" aria-pressed="${state.compare.has(p.id)}">${icon("compare")}</button></div>
       </div>
     </article>`).join("");
   renderFilterPills();
+  updateHeader();
 }
 
 function renderFilterPills(){
   const pills=[];
-  if(state.category!=="all") pills.push({label:state.category,kind:"category"});
-  if(state.search) pills.push({label:'Buscar: "'+state.search+'"',kind:"search"});
-  state.technology.forEach((value)=>pills.push({label:value,kind:"technology",value}));
-  if(state.maxPrice<25000) pills.push({label:"Hasta "+money(state.maxPrice),kind:"price"});
-  if(state.saleOnly) pills.push({label:"Ofertas",kind:"sale"});
-  $("#active-filters").innerHTML=pills.map((pill)=>'<button type="button" data-remove-filter="'+pill.kind+'" data-value="'+escapeHTML(pill.value||"")+'">'+escapeHTML(pill.label)+" "+icon("close")+"</button>").join("");
+  if(state.category!=="all")pills.push({kind:"category",label:state.category});
+  state.technology.forEach((value)=>pills.push({kind:"technology",label:value,value}));
+  if(state.search)pills.push({kind:"search",label:'Buscar: "'+state.search+'"'});
+  if(state.onlyFavorites)pills.push({kind:"favorites",label:"Favoritos"});
+  $("#active-filters").innerHTML=pills.map((pill)=>'<button type="button" data-clear="'+pill.kind+'" data-value="'+esc(pill.value||"")+'">'+esc(pill.label)+" "+icon("close")+"</button>").join("");
 }
+
+function updateHeader(){
+  const favorites=state.favorites.size;
+  $("#favorites-count").textContent=favorites;
+  $("#favorites-count").hidden=favorites===0;
+  $("#favorites-trigger").classList.toggle("active",state.onlyFavorites);
+  $("#favorites-trigger").setAttribute("aria-pressed",String(state.onlyFavorites));
+  const count=Object.values(state.cart).reduce((sum,qty)=>sum+qty,0);
+  $("#cart-count").textContent=count;
+  $("#drawer-count").textContent="("+count+")";
+}
+
 function setCategory(category){
   state.category=category;
-  $$(".category-tab").forEach((tab)=>{const active=tab.dataset.category===category;tab.classList.toggle("active",active);tab.setAttribute("aria-selected",String(active))});
-  renderProducts();
+  $$('input[name="category"]').forEach((input)=>input.checked=input.value===category);
+  renderCatalog();
 }
+
 function resetFilters(){
-  state.search="";state.technology.clear();state.maxPrice=25000;state.saleOnly=false;state.sort="featured";
-  $("#search-input").value="";$("#price-range").value="25000";$("#price-display").textContent=money(25000);$("#sale-only").checked=false;$("#sort-select").value="featured";
+  state.category="all";state.technology.clear();state.search="";state.sort="default";state.onlyFavorites=false;
+  $$('input[name="category"]').forEach((input)=>input.checked=input.value==="all");
   $$('input[name="technology"]').forEach((input)=>input.checked=false);
-  setCategory("all");
+  $("#search-input").value="";$("#sort-select").value="default";
+  renderCatalog();
 }
-function toast(message){
-  const node=$("#toast");node.textContent=message;node.classList.add("show");
-  clearTimeout(toastTimer);toastTimer=setTimeout(()=>node.classList.remove("show"),2800);
-}
-function refreshCart(){
-  const count=cartQuantity();
-  $("#cart-count").textContent=count;$("#drawer-count").textContent="("+count+")";
-  const selected=Object.entries(state.cart).filter(([id,qty])=>qty>0 && productById(id));
-  $("#cart-items").innerHTML=selected.length ? selected.map(([id,qty])=>{
+
+function renderCart(){
+  const selected=Object.entries(state.cart).filter(([id,qty])=>qty>0&&productById(id));
+  $("#cart-items").innerHTML=selected.length?selected.map(([id,qty])=>{
     const p=productById(id);
-    return `<div class="cart-item"><img src="${image(p)}" alt=""><div><h3>${p.name}</h3><p>${p.id} · ${p.technology}</p><strong>${money(p.price*qty)}</strong><div class="cart-item-bottom"><div class="qty-control"><button type="button" data-quantity="${id}" data-delta="-1" aria-label="Reducir cantidad de ${p.short}">−</button><span>${qty}</span><button type="button" data-quantity="${id}" data-delta="1" aria-label="Aumentar cantidad de ${p.short}">+</button></div><button type="button" class="remove-item" data-remove-item="${id}" aria-label="Quitar ${p.short}">${icon("trash")}</button></div></div></div>`;
-  }).join("") : '<div class="cart-empty">'+icon("bag")+'<h3>Tu selección está vacía</h3><p>Agrega los estuches que te interesan y prepara una solicitud en un solo mensaje.</p></div>';
-  const total=selected.reduce((sum,[id,qty])=>sum+productById(id).price*qty,0);
-  $("#cart-subtotal").textContent=money(total);
-  store.write("pulso-cart",state.cart);
+    return `<div class="cart-item"><div class="cart-art">${icon("image")}</div><div><h3>${p.name}</h3><p>${p.id} · Precio pendiente</p><div class="cart-item-row"><div class="qty-control"><button type="button" data-qty="${id}" data-delta="-1" aria-label="Reducir cantidad de ${p.name}">−</button><span>${qty}</span><button type="button" data-qty="${id}" data-delta="1" aria-label="Aumentar cantidad de ${p.name}">+</button></div><button type="button" class="remove-item" data-remove-item="${id}" aria-label="Quitar ${p.name}">${icon("trash")}</button></div></div></div>`;
+  }).join(""):'<div class="cart-empty">'+icon("bag")+'<h3>Tu lista está vacía</h3><p>Guarda las opciones que te interesen y vuelve a ellas cuando quieras.</p></div>';
+  storage.write("dx-demo-cart",state.cart);
+  updateHeader();
 }
+
 function addToCart(id){
-  const p=productById(id);if(!p)return;
-  state.cart[id]=(state.cart[id]||0)+1;refreshCart();toast(p.short+" añadido a tu selección");
+  const product=productById(id);if(!product)return;
+  state.cart[id]=(state.cart[id]||0)+1;
+  renderCart();notify(product.name+" añadido a tu lista");
 }
 function changeQuantity(id,delta){
   if(!productById(id))return;
-  state.cart[id]=Math.max(0,(state.cart[id]||0)+delta);
-  if(!state.cart[id])delete state.cart[id];
-  refreshCart();
+  const next=(state.cart[id]||0)+delta;
+  if(next<=0)delete state.cart[id];else state.cart[id]=next;
+  renderCart();
 }
-function showOverlay(){const overlay=$("#overlay");overlay.hidden=false;requestAnimationFrame(()=>overlay.classList.add("visible"));document.body.classList.add("locked")}
-function hideOverlay(){const overlay=$("#overlay");overlay.classList.remove("visible");setTimeout(()=>{if(!overlay.classList.contains("visible"))overlay.hidden=true},250);document.body.classList.remove("locked")}
-function closePanels(){
-  $("#cart-drawer").classList.remove("open");$("#cart-drawer").setAttribute("aria-hidden","true");
-  $("#product-modal").classList.remove("open");$("#product-modal").setAttribute("aria-hidden","true");
-  $("#filters").classList.remove("open");hideOverlay();
-  if(lastFocused){lastFocused.focus();lastFocused=null}
+function toggleFavorite(id){
+  if(!productById(id))return;
+  if(state.favorites.has(id))state.favorites.delete(id);else state.favorites.add(id);
+  storage.write("dx-demo-favorites",[...state.favorites]);
+  renderCatalog();
+  notify(state.favorites.has(id)?"Guardado en favoritos":"Quitado de favoritos");
 }
-function openCart(){
-  lastFocused=document.activeElement;closePanels();lastFocused=document.activeElement;
-  showOverlay();$("#cart-drawer").classList.add("open");$("#cart-drawer").setAttribute("aria-hidden","false");$("#close-cart").focus();
+function toggleCompare(id){
+  if(!productById(id))return;
+  if(state.compare.has(id))state.compare.delete(id);
+  else if(state.compare.size>=3){notify("Puedes comparar hasta 3 opciones");return}
+  else state.compare.add(id);
+  storage.write("dx-demo-compare",[...state.compare]);
+  renderCatalog();renderCompareTray();
 }
-function openModal(id){
-  const p=productById(id);if(!p)return;
-  lastFocused=document.activeElement;closePanels();lastFocused=document.activeElement;
-  $("#modal-content").innerHTML=`<div class="modal-grid"><div class="modal-image"><img src="${image(p)}" alt="${p.name}"></div><div class="modal-details"><div class="product-meta"><span>${p.id}</span><span>${p.technology} · ${p.category}</span></div><h2 id="modal-title">${p.name}</h2><p>${p.description}</p><div class="price-line"><strong>${money(p.price)}</strong>${p.oldPrice?"<del>"+money(p.oldPrice)+"</del>":""}</div><ul>${p.features.map((feature)=>"<li>"+icon("check")+feature+"</li>").join("")}</ul><button type="button" class="button button-primary full" data-add="${p.id}">Añadir a selección ${icon("arrow")}</button></div></div>`;
-  showOverlay();$("#product-modal").classList.add("open");$("#product-modal").setAttribute("aria-hidden","false");$("#close-modal").focus();
-}
-function openFilters(){lastFocused=document.activeElement;showOverlay();$("#filters").classList.add("open");$("#filters-close").focus()}
-async function requestQuote(){
-  const selected=Object.entries(state.cart).filter(([id,qty])=>qty>0 && productById(id));
-  if(!selected.length){toast("Agrega un estuche antes de preparar la solicitud");return}
-  const message="Hola, me interesan estos estuches de diagnóstico:\n"+selected.map(([id,qty])=>"• "+qty+" × "+productById(id).name+" ("+id+")").join("\n")+"\n\n¿Me pueden confirmar precio y disponibilidad?";
-  try{
-    await navigator.clipboard.writeText(message);
-  }catch{
-    const area=document.createElement("textarea");area.value=message;area.style.position="fixed";area.style.opacity="0";document.body.append(area);area.select();
-    const copied=document.execCommand("copy");area.remove();
-    if(!copied){toast("No se pudo copiar la solicitud");return}
-  }
-  toast("Solicitud copiada. Compártela con tu asesor.");
+function renderCompareTray(){
+  const count=state.compare.size;
+  $("#compare-tray").hidden=count===0;
+  $("#compare-count").textContent=count+" "+(count===1?"opción seleccionada":"opciones seleccionadas");
+  $("#compare-mini-list").innerHTML=[...state.compare].map((id)=>'<span title="'+esc(productById(id).name)+'">'+id.slice(-2)+'</span>').join("");
+  $("#open-compare").disabled=count<2;
+  $("#open-compare").innerHTML=count<2?"Elige otra opción "+icon("plus"):"Comparar "+icon("arrow");
 }
 
+function showOverlay(){
+  const overlay=$("#overlay");
+  overlay.hidden=false;
+  requestAnimationFrame(()=>overlay.classList.add("visible"));
+  document.body.classList.add("locked");
+}
+function hideOverlay(){
+  const overlay=$("#overlay");
+  overlay.classList.remove("visible");
+  setTimeout(()=>{if(!overlay.classList.contains("visible"))overlay.hidden=true},270);
+  document.body.classList.remove("locked");
+}
+function closePanel(restore=true){
+  if(activePanel){
+    activePanel.classList.remove("open");
+    if(activePanel.hasAttribute("aria-hidden"))activePanel.setAttribute("aria-hidden","true");
+  }
+  activePanel=null;hideOverlay();
+  if(restore&&previousFocus){previousFocus.focus();previousFocus=null}
+}
+function openPanel(panel,focusTarget){
+  if(activePanel)closePanel(false);
+  previousFocus=document.activeElement;
+  activePanel=panel;
+  showOverlay();
+  panel.classList.add("open");
+  if(panel.hasAttribute("aria-hidden"))panel.setAttribute("aria-hidden","false");
+  focusTarget.focus();
+}
+
+function showProduct(id){
+  const p=productById(id);if(!p)return;
+  $("#modal-content").innerHTML=`<div class="modal-grid"><div class="modal-art"><div class="hero-placeholder"><span class="placeholder-symbol">${icon("image")}</span><strong>Imagen pendiente</strong><small>Espacio reservado para ${p.name}</small></div></div><div class="modal-details"><span class="overline">${p.category.toUpperCase()} / ${p.id}</span><h2 id="modal-title">${p.name}</h2><p>Esta ficha de muestra enseña cómo se presentará la información definitiva del producto.</p><ul class="modal-placeholder-list"><li>${icon("image")} Imagen principal <small>POR AGREGAR</small></li><li>${icon("layers")} Descripción y características <small>POR AGREGAR</small></li><li>${icon("bag")} Precio y disponibilidad <small>POR AGREGAR</small></li></ul><button class="button button-dark full" type="button" data-add="${p.id}">Añadir a mi lista ${icon("arrow")}</button></div></div>`;
+  openPanel($("#product-modal"),$("#close-modal"));
+}
+
+function showComparison(){
+  if(state.compare.size<2){notify("Selecciona al menos 2 opciones");return}
+  const list=[...state.compare].map(productById);
+  const row=(label,render)=>'<tr><td>'+label+'</td>'+list.map((p)=>'<td>'+render(p)+'</td>').join("")+'</tr>';
+  $("#compare-content").innerHTML=`<span class="overline">VISTA COMPARATIVA</span><h2 id="compare-title">Compara tus opciones.</h2><p>Estos datos son de demostración; las fichas reales se agregarán con el catálogo del cliente.</p><div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Detalle</th>${list.map((p)=>'<th>'+p.name+'</th>').join("")}</tr></thead><tbody>${row("Uso",(p)=>p.category)}${row("Tecnología",(p)=>p.technology)}${row("Imagen",()=>'<span class="pending">Pendiente</span>')}${row("Precio",()=>'<span class="pending">Pendiente</span>')}</tbody></table></div>`;
+  openPanel($("#compare-modal"),$("#close-compare"));
+}
+
+async function copyList(){
+  const selected=Object.entries(state.cart).filter(([id,qty])=>qty>0&&productById(id));
+  if(!selected.length){notify("Agrega una opción antes de copiar la lista");return}
+  const text="Lista de interés — vista previa\n"+selected.map(([id,qty])=>"• "+qty+" × "+productById(id).name+" ("+id+")").join("\n")+"\n\nProductos y precios finales pendientes de confirmación.";
+  try{await navigator.clipboard.writeText(text)}
+  catch{
+    const area=document.createElement("textarea");
+    area.value=text;area.style.position="fixed";area.style.opacity="0";
+    document.body.append(area);area.select();
+    const copied=document.execCommand("copy");area.remove();
+    if(!copied){notify("No se pudo copiar la lista");return}
+  }
+  notify("Lista copiada al portapapeles");
+}
+
+// Catalog and panel controls
 document.addEventListener("click",(event)=>{
-  const add=event.target.closest("[data-add]");if(add){addToCart(add.dataset.add);return}
-  const view=event.target.closest("[data-view]");if(view){openModal(view.dataset.view);return}
-  const favorite=event.target.closest("[data-favorite]");if(favorite){const id=favorite.dataset.favorite;if(state.favorites.has(id))state.favorites.delete(id);else state.favorites.add(id);store.write("pulso-favorites",[...state.favorites]);renderProducts();toast(state.favorites.has(id)?"Guardado en favoritos":"Eliminado de favoritos");return}
-  const qty=event.target.closest("[data-quantity]");if(qty){changeQuantity(qty.dataset.quantity,Number(qty.dataset.delta));return}
-  const remove=event.target.closest("[data-remove-item]");if(remove){delete state.cart[remove.dataset.removeItem];refreshCart();return}
-  const filter=event.target.closest("[data-remove-filter]");if(filter){const kind=filter.dataset.removeFilter;if(kind==="category")setCategory("all");if(kind==="search"){state.search="";$("#search-input").value=""}if(kind==="technology"){$$('input[name="technology"]').find((i)=>i.value===filter.dataset.value).checked=false;state.technology.delete(filter.dataset.value)}if(kind==="price"){state.maxPrice=25000;$("#price-range").value="25000";$("#price-display").textContent=money(25000)}if(kind==="sale"){state.saleOnly=false;$("#sale-only").checked=false}renderProducts();return}
-  const tab=event.target.closest("[data-category]");if(tab){setCategory(tab.dataset.category);return}
-  const guide=event.target.closest("[data-guide]");if(guide){setCategory(guide.dataset.guide);$("#catalogo").scrollIntoView({behavior:"smooth"});return}
+  const target=event.target;
+  const categoryCard=target.closest("[data-category-card]");
+  if(categoryCard){setCategory(categoryCard.dataset.categoryCard);$("#catalogo").scrollIntoView({behavior:reducedMotion?"auto":"smooth"});return}
+  const add=target.closest("[data-add]");if(add){addToCart(add.dataset.add);return}
+  const view=target.closest("[data-view]");if(view){showProduct(view.dataset.view);return}
+  const favorite=target.closest("[data-favorite]");if(favorite){toggleFavorite(favorite.dataset.favorite);return}
+  const compare=target.closest("[data-compare]");if(compare){toggleCompare(compare.dataset.compare);return}
+  const qty=target.closest("[data-qty]");if(qty){changeQuantity(qty.dataset.qty,Number(qty.dataset.delta));return}
+  const remove=target.closest("[data-remove-item]");if(remove){delete state.cart[remove.dataset.removeItem];renderCart();return}
+  const pill=target.closest("[data-clear]");
+  if(pill){
+    if(pill.dataset.clear==="category")state.category="all";
+    if(pill.dataset.clear==="technology")state.technology.delete(pill.dataset.value);
+    if(pill.dataset.clear==="search"){state.search="";$("#search-input").value=""}
+    if(pill.dataset.clear==="favorites")state.onlyFavorites=false;
+    $$('input[name="category"]').forEach((input)=>input.checked=input.value===state.category);
+    $$('input[name="technology"]').forEach((input)=>input.checked=state.technology.has(input.value));
+    renderCatalog();return;
+  }
 });
-$("#open-cart").addEventListener("click",openCart);
-$("#close-cart").addEventListener("click",closePanels);
-$("#continue-shopping").addEventListener("click",closePanels);
-$("#close-modal").addEventListener("click",closePanels);
-$("#overlay").addEventListener("click",closePanels);
-$("#filter-toggle").addEventListener("click",openFilters);
-$("#filters-close").addEventListener("click",closePanels);
-$("#quote-button").addEventListener("click",requestQuote);
-$("#clear-filters").addEventListener("click",resetFilters);
+$("#open-cart").addEventListener("click",()=>{renderCart();openPanel($("#cart-drawer"),$("#close-cart"))});
+$("#close-cart").addEventListener("click",()=>closePanel());
+$("#continue-shopping").addEventListener("click",()=>closePanel());
+$("#close-modal").addEventListener("click",()=>closePanel());
+$("#close-compare").addEventListener("click",()=>closePanel());
+$("#overlay").addEventListener("click",()=>closePanel());
+$("#open-filters").addEventListener("click",()=>openPanel($("#filter-panel"),$("#close-filters")));
+$("#close-filters").addEventListener("click",()=>closePanel());
+$("#open-compare").addEventListener("click",showComparison);
+$("#clear-compare").addEventListener("click",()=>{state.compare.clear();storage.write("dx-demo-compare",[]);renderCatalog();renderCompareTray()});
+$("#copy-list").addEventListener("click",copyList);
+$("#reset-filters").addEventListener("click",resetFilters);
 $("#empty-reset").addEventListener("click",resetFilters);
-$("#search-input").addEventListener("input",(event)=>{state.search=event.target.value.trim();renderProducts()});
-$("#sort-select").addEventListener("change",(event)=>{state.sort=event.target.value;renderProducts()});
-$("#price-range").addEventListener("input",(event)=>{state.maxPrice=Number(event.target.value);$("#price-display").textContent=money(state.maxPrice);renderProducts()});
-$("#sale-only").addEventListener("change",(event)=>{state.saleOnly=event.target.checked;renderProducts()});
-$$('input[name="technology"]').forEach((input)=>input.addEventListener("change",()=>{state.technology=new Set($$('input[name="technology"]:checked').map((item)=>item.value));renderProducts()}));
-$("#menu-trigger").addEventListener("click",()=>{const menu=$("#mobile-nav");const open=menu.hidden;menu.hidden=!open;$("#menu-trigger").setAttribute("aria-expanded",String(open))});
-$$(".mobile-nav a").forEach((link)=>link.addEventListener("click",()=>{$("#mobile-nav").hidden=true;$("#menu-trigger").setAttribute("aria-expanded","false")}));
-document.addEventListener("keydown",(event)=>{if(event.key==="Escape")closePanels()});
-renderProducts();refreshCart();
+$("#favorites-trigger").addEventListener("click",()=>{
+  state.onlyFavorites=!state.onlyFavorites;renderCatalog();
+  $("#catalogo").scrollIntoView({behavior:reducedMotion?"auto":"smooth"});
+});
+$("#search-input").addEventListener("input",(event)=>{state.search=event.target.value.trim();renderCatalog()});
+$("#sort-select").addEventListener("change",(event)=>{state.sort=event.target.value;renderCatalog()});
+$$('input[name="category"]').forEach((input)=>input.addEventListener("change",()=>setCategory(input.value)));
+$$('input[name="technology"]').forEach((input)=>input.addEventListener("change",()=>{
+  state.technology=new Set($$('input[name="technology"]:checked').map((checked)=>checked.value));
+  renderCatalog();
+}));
+$("#mobile-menu-button").addEventListener("click",()=>{
+  const menu=$("#mobile-nav");menu.hidden=!menu.hidden;
+  $("#mobile-menu-button").setAttribute("aria-expanded",String(!menu.hidden));
+});
+$$(".mobile-nav a").forEach((link)=>link.addEventListener("click",()=>{
+  $("#mobile-nav").hidden=true;$("#mobile-menu-button").setAttribute("aria-expanded","false");
+}));
+document.addEventListener("keydown",(event)=>{
+  if(event.key==="Escape"&&activePanel)closePanel();
+  if(event.key!=="Tab"||!activePanel)return;
+  const focusable=$$('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])').filter((node)=>activePanel.contains(node)&&node.getClientRects().length);
+  if(!focusable.length)return;
+  const first=focusable[0],last=focusable[focusable.length-1];
+  if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
+  if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
+});
+
+// Motion details remain decorative and respect reduced-motion settings.
+if(!reducedMotion){
+  document.documentElement.classList.add("js-motion");
+  if("IntersectionObserver" in window){
+    const observer=new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add("in-view");observer.unobserve(entry.target)}});
+    },{threshold:.08,rootMargin:"0px 0px 50px 0px"});
+    $$(".reveal").forEach((node)=>observer.observe(node));
+  }else $$(".reveal").forEach((node)=>node.classList.add("in-view"));
+  const showcase=$("#hero-showcase");
+  showcase.addEventListener("pointermove",(event)=>{
+    if(event.pointerType==="touch")return;
+    const rect=showcase.getBoundingClientRect(),x=(event.clientX-rect.left)/rect.width,y=(event.clientY-rect.top)/rect.height;
+    showcase.style.setProperty("--glow-x",Math.round(x*100)+"%");
+    showcase.style.setProperty("--glow-y",Math.round(y*100)+"%");
+    showcase.style.transform="perspective(1000px) rotateX("+((.5-y)*4)+"deg) rotateY("+((x-.5)*4)+"deg)";
+  });
+  showcase.addEventListener("pointerleave",()=>showcase.style.transform="");
+  $("#product-grid").addEventListener("pointermove",(event)=>{
+    if(event.pointerType==="touch")return;
+    const card=event.target.closest(".product-card");if(!card)return;
+    const rect=card.getBoundingClientRect(),x=(event.clientX-rect.left)/rect.width,y=(event.clientY-rect.top)/rect.height;
+    card.style.setProperty("--rx",((.5-y)*3)+"deg");card.style.setProperty("--ry",((x-.5)*3)+"deg");
+  });
+  $("#product-grid").addEventListener("pointerout",(event)=>{
+    const card=event.target.closest(".product-card");
+    if(card&&!card.contains(event.relatedTarget)){card.style.removeProperty("--rx");card.style.removeProperty("--ry")}
+  });
+}
+
+renderCatalog();
+renderCart();
+renderCompareTray();

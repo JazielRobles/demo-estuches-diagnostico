@@ -1,11 +1,12 @@
-# Pulso Médico — demo de catálogo
+# Estuches de diagnóstico — plantilla de tienda
 
-Propuesta conceptual de tienda para estuches de diagnóstico. Incluye catálogo adaptable a móvil, búsqueda, filtros, fichas rápidas, favoritos y carrito que prepara una solicitud de cotización para copiar.
+Vista previa de diseño minimalista para un catálogo médico. La página incluye navegación móvil, búsqueda, filtros, favoritos, fichas rápidas, comparación de hasta tres opciones y una lista de interés con cantidades y copia al portapapeles. Las animaciones respetan la preferencia de movimiento reducido.
 
-## Alcance
+## Contenido provisional
 
-- Los 12 productos y precios son ilustrativos. Deben confirmarse antes de cualquier venta.
-- La demo no procesa pagos ni envía mensajes. El contacto del negocio se configura cuando el cliente proporcione sus datos.
-- Las imágenes de producto provienen de la [tienda usada como referencia](https://welchallynstore.mx/categoria-producto/estuches-de-dx). La marca Pulso Médico es conceptual y no representa una afiliación oficial.
+- El encabezado muestra **TU MARCA / LOGO PENDIENTE**.
+- Los seis registros de `sampleProducts` en `app.js` son muestras de interfaz, no productos reales.
+- No hay fotos ni precios reales. Las tarjetas muestran espacios reservados.
+- La página no procesa pagos ni envía mensajes. El canal de contacto se conectará cuando el cliente proporcione sus datos.
 
-Sitio estático: abrir `index.html` o servir esta carpeta con cualquier servidor web.
+Para personalizar: sustituir el logo en `index.html`, cargar las fotos, reemplazar los registros de muestra en `app.js` y conectar precios, disponibilidad y contacto. Abrir `index.html` para una revisión local.
