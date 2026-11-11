@@ -2,22 +2,6 @@
   const products=window.DEMO_PRODUCTS||[];
   const $=(selector,root=document)=>root.querySelector(selector);
   const $$=(selector,root=document)=>[...root.querySelectorAll(selector)];
-  const paths={
-    arrow:'<path d="M4 12h16m-6-6 6 6-6 6"/>',
-    up:'<path d="M5 19 19 5M8 5h11v11"/>',
-    bag:'<path d="M4.5 8h15l-1.2 12H5.7L4.5 8Z"/><path d="M8.5 9V6a3.5 3.5 0 0 1 7 0v3"/>',
-    heart:'<path d="M20.7 8.4c0 4.5-8.7 10.2-8.7 10.2S3.3 12.9 3.3 8.4A4.6 4.6 0 0 1 12 6.2a4.6 4.6 0 0 1 8.7 2.2Z"/>',
-    search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/>',
-    menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',
-    close:'<path d="M5 5 19 19M19 5 5 19"/>',
-    check:'<path d="m4 12 5 5L20 6"/>',
-    chevron:'<path d="m6 9 6 6 6-6"/>',
-    compare:'<path d="M5 4v16M19 4v16M9 8h6M9 12h6M9 16h6"/>',
-    copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>',
-    trash:'<path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13M10 10v7m4-7v7"/>',
-    plus:'<path d="M12 4v16M4 12h16"/>'
-  };
-  function icon(name,extra=""){return '<svg class="icon '+extra+'" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(paths[name]||"")+'</svg>'}
   function read(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}}
   function write(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch{}}
   const validIds=new Set(products.map((p)=>p.id));
@@ -33,7 +17,7 @@
   const countCart=()=>Object.values(cart).reduce((sum,qty)=>sum+qty,0);
 
   function visual(product,extra=""){
-    return '<div class="product-art tone-'+product.tone+' '+extra+'"><div class="art-halo"></div><div class="case-illustration"><span class="case-handle"></span><span class="instrument instrument-one"></span><span class="instrument instrument-two"></span><span class="case-seam"></span></div><span class="art-note">Fotografía pendiente</span></div>';
+    return '<div class="product-art tone-'+product.tone+' '+extra+'"><span class="photo-index">VISTA PREVIA / '+esc(product.id.replace("demo-",""))+'</span><div class="photo-frame"><span>FOTOGRAFÍA</span><strong>DEL PRODUCTO</strong><small>Espacio reservado para la imagen del cliente</small></div><span class="art-note">IMAGEN PENDIENTE</span></div>';
   }
   function card(product,options={}){
     const saved=favorites.has(product.id);
@@ -41,32 +25,32 @@
     return '<article class="product-card" data-id="'+product.id+'">'+
       '<a class="product-card-link" href="producto.html?id='+product.id+'" aria-label="Ver '+product.name+'">'+visual(product)+
       '<div class="product-card-copy"><span class="product-type">'+product.category+' · '+product.technology+'</span><h3>'+product.name+'</h3><p>Información del producto por completar</p><strong>Precio por definir</strong></div></a>'+
-      '<div class="product-card-actions"><button class="product-favorite '+(saved?"active":"")+'" type="button" data-favorite="'+product.id+'" aria-label="'+(saved?"Quitar de":"Añadir a")+' favoritos: '+product.name+'" aria-pressed="'+saved+'">'+icon("heart")+'</button><button class="product-add" type="button" data-add="'+product.id+'">Añadir a mi lista '+icon("arrow")+'</button>'+(options.compareSet?'<button class="product-compare '+(comparing?"active":"")+'" type="button" data-compare="'+product.id+'" aria-label="'+(comparing?"Quitar de":"Añadir a")+' comparación: '+product.name+'" aria-pressed="'+!!comparing+'">'+icon("compare")+'</button>':"")+'</div></article>';
+      '<div class="product-card-actions"><button class="product-favorite '+(saved?"active":"")+'" type="button" data-favorite="'+product.id+'" aria-label="'+(saved?"Quitar de":"Añadir a")+' favoritos: '+product.name+'" aria-pressed="'+saved+'">'+(saved?'Guardado':'Guardar')+'</button><button class="product-add" type="button" data-add="'+product.id+'">Añadir a mi lista</button>'+(options.compareSet?'<button class="product-compare '+(comparing?"active":"")+'" type="button" data-compare="'+product.id+'" aria-label="'+(comparing?"Quitar de":"Añadir a")+' comparación: '+product.name+'" aria-pressed="'+!!comparing+'">'+(comparing?'Comparando':'Comparar')+'</button>':"")+'</div></article>';
   }
   function renderHeader(){
     const mount=$("#site-header");if(!mount)return;
     const nav=[["home","Inicio","index.html"],["catalog","Catálogo","catalogo.html"],["guide","Guía de compra","guia.html"],["list","Mi selección","lista.html"]];
-    mount.innerHTML='<div class="top-strip"><div class="container"><span>Vista previa de tienda médica</span><span>Una experiencia para elegir con calma</span></div></div>'+
-    '<header class="header"><div class="container header-inner"><a class="brand" href="index.html" aria-label="Ir a inicio"><span class="brand-mark">'+icon("plus")+'</span><span class="brand-name">TU MARCA<small>Equipamiento médico</small></span></a>'+
+    mount.innerHTML='<div class="top-strip"><div class="container"><span>EXPERIENCIA DE COMPRA / DEMO</span><span>Estuches de diagnóstico · Próximamente con tu identidad</span></div></div>'+
+    '<header class="header"><div class="container header-inner"><a class="brand" href="index.html" aria-label="Ir a inicio"><span class="brand-mark">LOGO<br>AQUÍ</span><span class="brand-name">TU MARCA<small>Equipamiento médico</small></span></a>'+
     '<nav class="main-nav" aria-label="Navegación principal">'+nav.map(([key,label,url])=>'<a href="'+url+'" '+(page===key?'aria-current="page"':'')+'>'+label+'</a>').join("")+'</nav>'+
-    '<div class="header-actions"><button type="button" class="header-action" data-open-cart aria-label="Abrir mi lista">'+icon("bag")+'<span class="cart-count" data-cart-count>0</span></button><button type="button" class="menu-button" id="menu-button" aria-label="Abrir menú" aria-expanded="false">'+icon("menu")+'</button></div></div>'+
+    '<div class="header-actions"><button type="button" class="header-action" data-open-cart aria-label="Abrir mi lista">Mi lista <span class="cart-count" data-cart-count>0</span></button><button type="button" class="menu-button" id="menu-button" aria-label="Abrir menú" aria-expanded="false">Menú</button></div></div>'+
     '<nav class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil" hidden>'+nav.map(([key,label,url])=>'<a href="'+url+'" '+(page===key?'aria-current="page"':'')+'>'+label+'</a>').join("")+'</nav></header>';
   }
   function renderFooter(){
     const mount=$("#site-footer");if(!mount)return;
-    mount.innerHTML='<footer class="footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="index.html"><span class="brand-mark">'+icon("plus")+'</span><span class="brand-name">TU MARCA<small>Equipamiento médico</small></span></a><p>Un espacio diseñado para ayudar a elegir con claridad. La identidad y el catálogo definitivos se integrarán después.</p></div><div><h3>Explorar</h3><a href="catalogo.html">Catálogo</a><a href="guia.html">Guía de compra</a><a href="lista.html">Mi selección</a></div><div><h3>Información</h3><span>Logo pendiente</span><span>Productos pendientes</span><span>Precios por definir</span></div></div><div class="container footer-bottom"><span>© 2026 · Vista previa de diseño</span><span>Contenido de muestra · Sin pagos ni envíos activos</span></div></footer>';
+    mount.innerHTML='<footer class="footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="index.html"><span class="brand-mark">LOGO<br>AQUÍ</span><span class="brand-name">TU MARCA<small>Equipamiento médico</small></span></a><p>Un espacio diseñado para ayudar a elegir con claridad. La identidad y el catálogo definitivos se integrarán después.</p></div><div><h3>Explorar</h3><a href="catalogo.html">Catálogo</a><a href="guia.html">Guía de compra</a><a href="lista.html">Mi selección</a></div><div><h3>Información</h3><span>Logo pendiente</span><span>Productos pendientes</span><span>Precios por definir</span></div></div><div class="container footer-bottom"><span>© 2026 · Vista previa de diseño</span><span>Contenido de muestra · Sin pagos ni envíos activos</span></div></footer>';
   }
   function renderDrawerShell(){
-    document.body.insertAdjacentHTML("beforeend",'<div class="drawer-overlay" id="drawer-overlay" hidden></div><aside class="cart-drawer" id="cart-drawer" aria-label="Mi selección" aria-hidden="true"><div class="drawer-head"><div><span class="eyebrow">TU SELECCIÓN</span><h2>Mi lista <small data-drawer-count>(0)</small></h2></div><button type="button" class="round-button" data-close-cart aria-label="Cerrar lista">'+icon("close")+'</button></div><div class="drawer-items" id="drawer-items"></div><div class="drawer-foot"><p>Los precios se mostrarán cuando el cliente entregue el catálogo final.</p><a class="button button-primary full" href="lista.html">Ver mi selección '+icon("arrow")+'</a><button type="button" class="drawer-link" data-close-cart>Seguir explorando</button></div></aside><div class="toast" id="toast" role="status" aria-live="polite"></div>');
-    document.body.insertAdjacentHTML("beforeend",'<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div><button class="back-to-top" id="back-to-top" type="button" aria-label="Volver arriba" hidden>↑</button>');
+    document.body.insertAdjacentHTML("beforeend",'<div class="drawer-overlay" id="drawer-overlay" hidden></div><aside class="cart-drawer" id="cart-drawer" aria-label="Mi selección" aria-hidden="true"><div class="drawer-head"><div><span class="eyebrow">TU SELECCIÓN</span><h2>Mi lista <small data-drawer-count>(0)</small></h2></div><button type="button" class="round-button" data-close-cart>Cerrar</button></div><div class="drawer-items" id="drawer-items"></div><div class="drawer-foot"><p>Los precios se mostrarán cuando el cliente entregue el catálogo final.</p><a class="button button-primary full" href="lista.html">Ver mi selección</a><button type="button" class="drawer-link" data-close-cart>Seguir explorando</button></div></aside><div class="toast" id="toast" role="status" aria-live="polite"></div>');
+    document.body.insertAdjacentHTML("beforeend",'<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div><button class="back-to-top" id="back-to-top" type="button" hidden>Volver arriba</button>');
     $("#cart-drawer").inert=true;
   }
   function renderDrawer(){
     const entries=Object.entries(cart).filter(([id,qty])=>qty>0&&getProduct(id));
     $("#drawer-items").innerHTML=entries.length?entries.map(([id,qty])=>{
       const p=getProduct(id);
-      return '<div class="drawer-item"><div class="drawer-thumb">'+visual(p)+'</div><div><a href="producto.html?id='+id+'">'+p.name+'</a><span>'+p.category+' · Precio por definir</span><div class="quantity-control"><button type="button" data-qty="'+id+'" data-delta="-1" aria-label="Reducir cantidad de '+p.name+'">−</button><span>'+qty+'</span><button type="button" data-qty="'+id+'" data-delta="1" aria-label="Aumentar cantidad de '+p.name+'">+</button></div></div><button type="button" class="remove-button" data-remove="'+id+'" aria-label="Quitar '+p.name+'">'+icon("trash")+'</button></div>';
-    }).join(""):'<div class="drawer-empty"><span class="empty-icon">'+icon("bag")+'</span><h3>Tu lista está vacía</h3><p>Agrega opciones desde el catálogo para volver a ellas en cualquier momento.</p><a href="catalogo.html" class="text-link">Explorar catálogo '+icon("arrow")+'</a></div>';
+      return '<div class="drawer-item"><div class="drawer-thumb">'+visual(p)+'</div><div><a href="producto.html?id='+id+'">'+p.name+'</a><span>'+p.category+' · Precio por definir</span><div class="quantity-control"><button type="button" data-qty="'+id+'" data-delta="-1" aria-label="Reducir cantidad de '+p.name+'">−</button><span>'+qty+'</span><button type="button" data-qty="'+id+'" data-delta="1" aria-label="Aumentar cantidad de '+p.name+'">+</button></div></div><button type="button" class="remove-button" data-remove="'+id+'" aria-label="Quitar '+p.name+'">Quitar</button></div>';
+    }).join(""):'<div class="drawer-empty"><span class="empty-icon">MI LISTA</span><h3>Tu lista está vacía</h3><p>Agrega opciones desde el catálogo para volver a ellas en cualquier momento.</p><a href="catalogo.html" class="text-link">Explorar catálogo</a></div>';
     $$("[data-cart-count]").forEach((node)=>node.textContent=countCart());
     $$("[data-drawer-count]").forEach((node)=>node.textContent="("+countCart()+")");
     write("medica-demo-cart",cart);
@@ -122,6 +106,7 @@
       button.classList.toggle("active",saved);
       button.setAttribute("aria-pressed",String(saved));
       button.setAttribute("aria-label",(saved?"Quitar de":"Añadir a")+" favoritos: "+getProduct(id).name);
+      button.textContent=saved?"Guardado":"Guardar";
     });
     notify(favorites.has(id)?"Guardado en favoritos":"Quitado de favoritos");
     document.dispatchEvent(new CustomEvent("demo:favoritechange"));
@@ -183,5 +168,5 @@
     if(event.shiftKey&&document.activeElement===focusable[0]){event.preventDefault();focusable[focusable.length-1].focus()}
     if(!event.shiftKey&&document.activeElement===focusable[focusable.length-1]){event.preventDefault();focusable[0].focus()}
   });
-  window.DemoStore={products,getProduct,icon,visual,card,esc,notify,getCart:()=>({...cart}),getFavorites:()=>new Set(favorites),addToCart,updateQty,removeItem,toggleFavorite,copySelection,renderDrawer};
+  window.DemoStore={products,getProduct,visual,card,esc,notify,getCart:()=>({...cart}),getFavorites:()=>new Set(favorites),addToCart,updateQty,removeItem,toggleFavorite,copySelection,renderDrawer};
 })();

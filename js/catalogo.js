@@ -33,7 +33,7 @@
     state.technologies.forEach((value)=>pills.push({kind:"technology",label:value,value}));
     if(state.search)pills.push({kind:"search",label:'Buscar: "'+state.search+'"'});
     if(state.favoritesOnly)pills.push({kind:"favorites",label:"Favoritos"});
-    $("#active-filters").innerHTML=pills.map((p)=>'<button type="button" data-clear="'+p.kind+'" data-value="'+Store.esc(p.value||"")+'">'+Store.esc(p.label)+' <span aria-hidden="true">×</span></button>').join("");
+    $("#active-filters").innerHTML=pills.map((p)=>'<button type="button" data-clear="'+p.kind+'" data-value="'+Store.esc(p.value||"")+'">'+Store.esc(p.label)+' <span>Quitar</span></button>').join("");
     renderCompare();
   }
   function renderCompare(){
@@ -43,7 +43,7 @@
     $("#compare-count").textContent=count+" "+(count===1?"opción":"opciones");
     $("#compare-chips").innerHTML=[...state.compare].map((id)=>'<span>'+Store.getProduct(id).name+'</span>').join("");
     $("#open-compare").disabled=count<2;
-    $("#open-compare").innerHTML=count<2?'Elige otra opción <span aria-hidden="true">+</span>':'Comparar <span aria-hidden="true">↗</span>';
+    $("#open-compare").textContent=count<2?'Elige otra opción':'Comparar opciones';
     try{localStorage.setItem("medica-demo-compare",JSON.stringify([...state.compare]))}catch{}
   }
   function syncControls(){

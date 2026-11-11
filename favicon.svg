@@ -1,4 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect x="4" y="4" width="56" height="56" rx="28" fill="#315847"/>
-  <path d="M32 18v28M18 32h28" stroke="#f8f6f1" stroke-width="6" stroke-linecap="round"/>
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="#155b91"/>
+  <text x="32" y="38" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">LOGO</text>
 </svg>

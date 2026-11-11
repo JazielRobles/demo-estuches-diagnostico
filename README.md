@@ -10,10 +10,12 @@ Demo de una tienda de estuches de diagnóstico, diseñada para mostrar una exper
 - `guia.html`: guía con selector interactivo y preguntas frecuentes.
 - `lista.html`: selección persistente, edición de cantidades y copia al portapapeles.
 
-Los estilos comunes están en `css/base.css`; cada página carga solo su CSS y su JavaScript. Los datos de muestra están en `js/data.js` y las funciones compartidas en `js/site.js`. No se usan librerías de interfaz.
+Los estilos comunes están en `css/base.css` y la dirección visual azul en `css/refresh.css`; cada página carga además su CSS y su JavaScript específicos. Los datos de muestra están en `js/data.js` y las funciones compartidas en `js/site.js`. No se usan librerías de interfaz.
 
 ## Contenido pendiente
 
 Logo, productos, fotografías, descripciones, precios, disponibilidad y contacto deben sustituirse con los materiales aprobados por el cliente. Los registros `demo-01` a `demo-08` son únicamente muestras de interfaz. Esta versión no procesa pagos ni envía pedidos.
 
 Abrir `index.html` en el navegador para revisión local.
+
+Demo pública: https://jazielrobles.github.io/demo-estuches-diagnostico/
