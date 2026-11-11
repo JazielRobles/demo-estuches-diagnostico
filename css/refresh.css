@@ -22,7 +22,7 @@ h1 em,h2 em{color:#147caf}
 .header,.header.is-scrolled{background:rgba(255,255,255,.97);border-color:#dce7f0}
 .header.is-scrolled{box-shadow:0 12px 30px rgba(17,61,102,.1)}
 .brand{min-width:195px;gap:12px}
-.brand-mark{width:47px;height:47px;border-radius:10px;border:1px solid #a9d5e8;background:#e7f5fb;color:#155b91;font-family:"Plus Jakarta Sans",Arial,sans-serif;font-size:8px;font-weight:800;letter-spacing:.05em;line-height:1.1;text-align:center;transform:none!important}
+.brand-mark{width:47px;height:47px;border-radius:10px;border:1px solid #a9d5e8;background:#e7f5fb;color:#155b91;font-family:"Nunito Sans",Arial,sans-serif;font-size:8px;font-weight:800;letter-spacing:.05em;line-height:1.1;text-align:center;transform:none!important}
 .brand-name{font-size:25px;color:#123b60}
 .brand-name small{color:#58819b;font-size:9px}
 .main-nav a{color:#526d83;font-size:13px}
@@ -124,7 +124,7 @@ h1 em,h2 em{color:#147caf}
 .hero-photo-placeholder strong{font-family:var(--display);font-size:clamp(44px,4.4vw,66px);line-height:1.02;letter-spacing:-.055em;font-weight:500;margin:16px 0 24px}
 .hero-photo-placeholder small{font-size:13px;color:#d5ecf8}
 .hero-card{left:14px;bottom:18px;min-width:270px;border-radius:11px;box-shadow:0 16px 30px rgba(12,44,77,.2)}
-.hero-card-mark{width:auto;height:auto;padding:8px;border-radius:5px;background:#e4f5fb;color:#136a9a;font-family:"Plus Jakarta Sans",Arial,sans-serif;font-size:9px;font-weight:800}
+.hero-card-mark{width:auto;height:auto;padding:8px;border-radius:5px;background:#e4f5fb;color:#136a9a;font-family:"Nunito Sans",Arial,sans-serif;font-size:9px;font-weight:800}
 .hero-card small{color:#66869a}
 .hero-card strong{color:#173e60}
 .visual-caption{color:#c3e5f3;bottom:15px;right:23px}
@@ -139,7 +139,7 @@ h1 em,h2 em{color:#147caf}
 .tile-illustration{width:240px;height:240px;right:20px;top:20px;border-color:rgba(19,82,124,.17)}
 .tile-illustration::before{border-color:rgba(19,82,124,.13)}
 .category-professional .tile-illustration,.category-professional .tile-illustration::before{border-color:rgba(255,255,255,.23)}
-.tile-illustration span,.tile-professional-art span{font-family:"Plus Jakarta Sans",Arial,sans-serif;font-size:13px;font-weight:800;letter-spacing:.08em;color:#246d9b;text-align:center}
+.tile-illustration span,.tile-professional-art span{font-family:"Nunito Sans",Arial,sans-serif;font-size:13px;font-weight:800;letter-spacing:.08em;color:#246d9b;text-align:center}
 .category-professional .tile-illustration span{color:#d3f0f7;font-size:12px}
 .tile-bottom h3{font-size:38px}
 .tile-bottom p,.category-professional .tile-bottom p{color:inherit;opacity:.75;font-size:14px}
@@ -153,12 +153,12 @@ h1 em,h2 em{color:#147caf}
 .editorial-paper::before{background:#2395c0}
 .paper-overline{color:#497793}
 .paper-line{background:#d7ebf5}
-.paper-seal{width:auto;height:auto;padding:11px 13px;border-radius:7px;border-color:#a8d7e9;background:#e8f7fc;color:#17649a;font-family:"Plus Jakarta Sans",Arial,sans-serif;font-size:10px;font-weight:800}
+.paper-seal{width:auto;height:auto;padding:11px 13px;border-radius:7px;border-color:#a8d7e9;background:#e8f7fc;color:#17649a;font-family:"Nunito Sans",Arial,sans-serif;font-size:10px;font-weight:800}
 .editorial-caption{color:#336987}
 .editorial-copy li{color:#486b81}
 .journey-section{background:#f3f9fd}
 .journey-step{border-radius:14px;border-color:#dbeaf2}
-.journey-icon{height:auto;margin:30px 0 12px;font-family:"Plus Jakarta Sans",Arial,sans-serif;font-size:12px;letter-spacing:.13em;font-weight:800;color:#1287b4}
+.journey-icon{height:auto;margin:30px 0 12px;font-family:"Nunito Sans",Arial,sans-serif;font-size:12px;letter-spacing:.13em;font-weight:800;color:#1287b4}
 .journey-step h3{color:#143c60}
 .closing-panel{background:linear-gradient(115deg,#1b6b9c,#123e6a);border-radius:18px;box-shadow:0 22px 45px rgba(22,77,127,.18)}
 .closing-panel::after{border-color:rgba(255,255,255,.28)}
@@ -172,7 +172,7 @@ h1 em,h2 em{color:#147caf}
 .catalog-intro .breadcrumbs,.catalog-intro .eyebrow,.catalog-intro p{color:#d1e9f4}
 .catalog-intro h1{color:#fff}
 .catalog-intro h1 em{color:#a6e7f3}
-.intro-flower{color:rgba(188,233,245,.28);font-family:"Plus Jakarta Sans",Arial,sans-serif;font-size:42px;font-weight:800;line-height:1.05;letter-spacing:.08em;text-align:right;animation:none}
+.intro-flower{color:rgba(188,233,245,.28);font-family:"Nunito Sans",Arial,sans-serif;font-size:42px;font-weight:800;line-height:1.05;letter-spacing:.08em;text-align:right;animation:none}
 .catalog-section{background:#fff}
 .catalog-top h2{color:#153e60}
 .catalog-top p{color:#627f91}
@@ -183,7 +183,7 @@ h1 em,h2 em{color:#147caf}
 .filter-option small{color:#6e91a7}
 .clear-filters{color:#176fa8}
 .filter-help{background:linear-gradient(145deg,#164d7e,#1d77a4);color:#fff;border-radius:10px}
-.filter-help>span{font-family:"Plus Jakarta Sans",Arial,sans-serif;font-size:10px;letter-spacing:.13em;font-weight:800;color:#a9eaf5}
+.filter-help>span{font-family:"Nunito Sans",Arial,sans-serif;font-size:10px;letter-spacing:.13em;font-weight:800;color:#a9eaf5}
 .filter-help p{color:#fff;font-size:15px}
 .filter-help a{color:#c6f0f9;font-size:12px}
 .search-box,.sort-box{border-color:#cbdfea;border-radius:8px;background:#f8fbfd}
@@ -196,7 +196,7 @@ h1 em,h2 em{color:#147caf}
 .mobile-filter-button{border-color:#cbdfea;background:#f8fbfd;color:#155b91;border-radius:8px;font-weight:700}
 .active-filters button{background:#e5f4fa;border-color:#add8e9;color:#17649a}
 .empty-state{background:#f1f9fc;border-color:#abd6e6}
-.empty-state>span{font-family:"Plus Jakarta Sans",Arial,sans-serif;font-size:11px;font-weight:800;letter-spacing:.13em;color:#176fa8}
+.empty-state>span{font-family:"Nunito Sans",Arial,sans-serif;font-size:11px;font-weight:800;letter-spacing:.13em;color:#176fa8}
 .catalog-note{color:#738fa0}
 .filter-overlay,.compare-dialog::backdrop{background:rgba(9,34,57,.55)}
 .compare-bar{border-radius:12px;border-color:#bad8e7;box-shadow:0 17px 40px rgba(19,61,103,.2)}
@@ -246,7 +246,7 @@ h1 em,h2 em{color:#147caf}
 .selector-copy h2,.selector-copy p{color:#fff}
 .selector-copy h2 em{color:#a6e6f3}
 .selector-copy .eyebrow{color:#9addf0}
-.selector-mark{font-family:"Plus Jakarta Sans",Arial,sans-serif;font-size:39px;font-weight:800;line-height:1.15;letter-spacing:.07em;color:rgba(198,237,247,.23);margin-top:42px}
+.selector-mark{font-family:"Nunito Sans",Arial,sans-serif;font-size:39px;font-weight:800;line-height:1.15;letter-spacing:.07em;color:rgba(198,237,247,.23);margin-top:42px}
 .selector-card{border-color:#b9d9e9;border-radius:16px;box-shadow:0 20px 50px rgba(8,41,74,.2)}
 .choice{border-radius:9px;background:#f4f9fc;border-color:#d5e7f0}
 .choice:hover{border-color:#87c8df}
@@ -278,7 +278,7 @@ h1 em,h2 em{color:#147caf}
 .list-item-copy p,.list-heading a{color:#17649a}
 .remove-link{color:#176fa8}
 .list-empty{background:radial-gradient(circle at 50% 0,#dbf0f8,#f1f8fc 70%);border:1px solid #d7eaf3;border-radius:16px}
-.empty-decoration{font-family:"Plus Jakarta Sans",Arial,sans-serif;font-size:25px;font-weight:800;letter-spacing:.12em;line-height:1.25;color:#9acbdd;animation:none}
+.empty-decoration{font-family:"Nunito Sans",Arial,sans-serif;font-size:25px;font-weight:800;letter-spacing:.12em;line-height:1.25;color:#9acbdd;animation:none}
 .list-more{background:#eff7fb}
 
 @media(max-width:1050px){

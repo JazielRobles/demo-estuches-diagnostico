@@ -11,7 +11,7 @@
 .catalog-layout{display:grid;grid-template-columns:215px minmax(0,1fr);gap:36px}
 .filter-panel{border-top:1px solid var(--line)}
 .filter-head{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.filter-head h3{font-family:"Plus Jakarta Sans",Arial,sans-serif;font-size:13px;margin:0}
+.filter-head h3{font-family:"Nunito Sans",Arial,sans-serif;font-size:13px;margin:0}
 .filter-close{display:none}
 .filter-group{border:0;border-top:1px solid var(--line);padding:20px 0 22px;margin:0}
 .filter-group legend{font-size:11px;font-weight:700;padding:0;float:left;width:100%;margin-bottom:15px}
@@ -65,7 +65,7 @@
 .compare-table-wrap{overflow-x:auto}
 .compare-dialog table{border-collapse:collapse;width:100%;min-width:540px;text-align:left}
 .compare-dialog th,.compare-dialog td{border-bottom:1px solid var(--line);padding:14px 10px;font-size:11px}
-.compare-dialog th:first-child{color:#879588;width:130px;font-family:"Plus Jakarta Sans",Arial,sans-serif;font-weight:600}
+.compare-dialog th:first-child{color:#879588;width:130px;font-family:"Nunito Sans",Arial,sans-serif;font-weight:600}
 .compare-dialog th:not(:first-child){font-family:var(--display);font-size:15px;font-weight:500}
 .compare-dialog td:first-child{color:#879588}
 .compare-dialog .muted{color:#9aaa9a}
