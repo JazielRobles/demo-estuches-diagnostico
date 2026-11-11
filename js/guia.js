@@ -5,6 +5,10 @@
     if(tech)params.set("tecnologia",tech);
     document.querySelector("#selector-link").href="catalogo.html?"+params.toString();
     document.querySelector("#selector-summary").textContent=stage+" · "+(tech||"Todas las tecnologías");
+    const result=document.querySelector(".selector-result");
+    result.classList.remove("changed");
+    void result.offsetWidth;
+    result.classList.add("changed");
   }
   document.querySelectorAll("[data-stage]").forEach((button)=>button.addEventListener("click",()=>{
     stage=button.dataset.stage;

@@ -32,3 +32,31 @@
 .list-more{background:var(--cream)}
 @media(max-width:900px){.list-grid{grid-template-columns:1fr;gap:35px}.list-summary{position:static;max-width:560px}}
 @media(max-width:620px){.list-heading{align-items:flex-start;flex-direction:column}.list-item{grid-template-columns:90px 1fr;gap:12px}.list-item-art,.list-item-art .product-art{width:90px;height:104px}.list-item-art .case-illustration{transform:scale(.46) rotate(-8deg)}.list-item-copy h3{font-size:18px}.list-item-actions{margin-top:14px}}
+
+/* A clearer end to the browsing journey */
+.list-heading h2{font-size:38px}
+.list-heading h2 small{font-size:16px}
+.list-heading a{font-size:13px}
+.list-item{grid-template-columns:140px 1fr;padding:24px 12px;transition:background .25s,transform .25s}
+.list-item:hover{background:#f8faf5;transform:translateX(4px)}
+.list-item-art{width:140px;height:145px}
+.list-item-art .product-art{width:140px;height:145px}
+.list-item-copy>span{font-size:11px}
+.list-item-copy h3{font-size:27px}
+.list-item-copy p{font-size:14px}
+.list-item-actions{margin-top:24px}
+.remove-link{font-size:12px}
+.list-summary{padding:31px;background:linear-gradient(145deg,#f7f8f3,#edf3e9);box-shadow:0 17px 34px rgba(42,65,43,.06)}
+.list-summary h2{font-size:36px}
+.list-summary p{font-size:14px}
+.summary-row{font-size:13px;padding:17px 0}
+.summary-row strong{font-size:13px}
+.list-summary small{font-size:11px}
+.list-empty{padding:80px 20px;background:radial-gradient(circle at 50% 10%,#eef3e8,#f8f6f1 70%)}
+.list-empty h3{font-size:36px}
+.list-empty p{font-size:14px}
+.empty-decoration{font-size:85px;animation:emptyTurn 12s ease-in-out infinite}
+@keyframes emptyTurn{50%{transform:rotate(25deg) scale(1.07)}}
+@media(max-width:900px){.list-summary{max-width:600px}}
+@media(max-width:620px){.list-heading h2{font-size:32px}.list-item{grid-template-columns:94px 1fr;padding:20px 0}.list-item-art,.list-item-art .product-art{width:94px;height:110px}.list-item-copy h3{font-size:22px}.list-item-copy p{font-size:12px}.list-summary h2{font-size:32px}.list-summary p{font-size:13px}.list-empty h3{font-size:31px}.list-empty p{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.empty-decoration{animation:none}}

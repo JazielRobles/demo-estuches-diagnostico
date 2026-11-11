@@ -58,6 +58,7 @@
   }
   function renderDrawerShell(){
     document.body.insertAdjacentHTML("beforeend",'<div class="drawer-overlay" id="drawer-overlay" hidden></div><aside class="cart-drawer" id="cart-drawer" aria-label="Mi selección" aria-hidden="true"><div class="drawer-head"><div><span class="eyebrow">TU SELECCIÓN</span><h2>Mi lista <small data-drawer-count>(0)</small></h2></div><button type="button" class="round-button" data-close-cart aria-label="Cerrar lista">'+icon("close")+'</button></div><div class="drawer-items" id="drawer-items"></div><div class="drawer-foot"><p>Los precios se mostrarán cuando el cliente entregue el catálogo final.</p><a class="button button-primary full" href="lista.html">Ver mi selección '+icon("arrow")+'</a><button type="button" class="drawer-link" data-close-cart>Seguir explorando</button></div></aside><div class="toast" id="toast" role="status" aria-live="polite"></div>');
+    document.body.insertAdjacentHTML("beforeend",'<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div><button class="back-to-top" id="back-to-top" type="button" aria-label="Volver arriba" hidden>↑</button>');
     $("#cart-drawer").inert=true;
   }
   function renderDrawer(){
@@ -146,7 +147,21 @@
     },{threshold:.08,rootMargin:"0px 0px 30px 0px"});
     $$(".reveal").forEach((node)=>observer.observe(node));
   }
-  renderHeader();renderFooter();renderDrawerShell();renderDrawer();initMotion();
+  function initScrollEffects(){
+    let scheduled=false;
+    const update=()=>{
+      const max=document.documentElement.scrollHeight-innerHeight;
+      $("#scroll-progress").style.transform="scaleX("+(max>0?scrollY/max:0)+")";
+      $(".header").classList.toggle("is-scrolled",scrollY>24);
+      $("#back-to-top").hidden=scrollY<540;
+      scheduled=false;
+    };
+    addEventListener("scroll",()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update)}},{passive:true});
+    addEventListener("resize",update);
+    $("#back-to-top").addEventListener("click",()=>scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}));
+    update();
+  }
+  renderHeader();renderFooter();renderDrawerShell();renderDrawer();initMotion();initScrollEffects();
   document.addEventListener("click",(event)=>{
     const add=event.target.closest("[data-add]");if(add){addToCart(add.dataset.add,add.dataset.quantity||1);return}
     const favorite=event.target.closest("[data-favorite]");if(favorite){toggleFavorite(favorite.dataset.favorite);return}

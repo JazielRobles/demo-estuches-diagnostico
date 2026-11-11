@@ -49,3 +49,37 @@
 @media(max-width:620px){.detail-section{padding-bottom:65px}.detail-gallery>.product-art,#main-product-art>.product-art{height:350px}.detail-art .case-illustration{transform:scale(1.2) rotate(-8deg)}.detail-art .art-halo{width:290px;height:290px;top:30px}.detail-info h1{font-size:43px}.purchase-actions{flex-wrap:wrap}.purchase-actions .button{min-width:55%}}
 @media(max-width:390px){.detail-gallery>.product-art,#main-product-art>.product-art{height:300px}.detail-info h1{font-size:38px}.purchase-actions .button{order:3;flex-basis:100%}}
 .gallery-thumbs .detail-art .case-illustration{position:absolute;left:50%;top:50%;margin-left:-69px;margin-top:-82px;transform:scale(.4) rotate(-8deg)}
+
+/* Product gallery and reading scale */
+.product-breadcrumb-wrap{padding-top:39px}
+.detail-grid{gap:82px}
+.detail-gallery>.product-art,#main-product-art>.product-art{height:545px}
+.detail-art .case-illustration{transform:scale(1.78) rotate(-8deg)}
+.detail-info h1{font-size:clamp(49px,4.9vw,69px)}
+.detail-lead{font-size:16px;line-height:1.8}
+.detail-price span{font-size:13px}
+.detail-price strong{font-size:37px}
+.detail-price small{font-size:12px}
+.detail-points{font-size:14px}
+.detail-points div{margin:13px 0}
+.detail-points span{width:26px;height:26px;font-size:13px}
+.purchase-actions .button{font-size:14px}
+.detail-note{font-size:12px}
+.detail-accordions summary{font-size:15px}
+.detail-accordions details p{font-size:14px}
+.gallery-note{font-size:12px}
+.gallery-thumbs button{width:98px;height:98px;transition:transform .22s,box-shadow .22s,border-color .22s}
+.gallery-thumbs button:hover{transform:translateY(-4px);box-shadow:0 9px 19px rgba(38,64,46,.11)}
+.gallery-thumbs .product-art{width:94px;height:94px}
+@keyframes galleryReveal{from{opacity:.58;transform:scale(.975)}to{opacity:1;transform:scale(1)}}
+#main-product-art .product-art{animation:galleryReveal .42s ease both}
+@keyframes accordionReveal{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+.detail-accordions details[open] p{animation:accordionReveal .3s ease}
+.detail-favorite{transition:transform .2s,background .2s}
+.detail-favorite:hover{transform:scale(1.06)}
+@media(max-width:1000px){.detail-grid{gap:45px}.detail-gallery>.product-art,#main-product-art>.product-art{height:470px}.detail-art .case-illustration{transform:scale(1.48) rotate(-8deg)}.detail-info h1{font-size:54px}}
+@media(max-width:800px){.detail-info h1{font-size:58px}.detail-gallery>.product-art,#main-product-art>.product-art{height:490px}.detail-art .case-illustration{transform:scale(1.6) rotate(-8deg)}}
+@media(max-width:620px){.detail-gallery>.product-art,#main-product-art>.product-art{height:370px}.detail-art .case-illustration{transform:scale(1.24) rotate(-8deg)}.detail-info h1{font-size:47px}.detail-lead{font-size:15px}.detail-price strong{font-size:34px}.detail-points{font-size:13px}.gallery-thumbs button{width:88px;height:88px}.gallery-thumbs .product-art{width:84px;height:84px}}
+@media(max-width:390px){.detail-gallery>.product-art,#main-product-art>.product-art{height:320px}.detail-info h1{font-size:42px}}
+.gallery-thumbs .detail-art .case-illustration{transform:scale(.4) rotate(-8deg)}
+@media(prefers-reduced-motion:reduce){#main-product-art .product-art,.detail-accordions details[open] p{animation:none}}

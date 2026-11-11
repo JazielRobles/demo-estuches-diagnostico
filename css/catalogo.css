@@ -74,3 +74,52 @@
 @media(max-width:620px){.intro-flower{display:none}.catalog-section{padding:53px 0 70px}.catalog-top{display:block}.catalog-top h2{font-size:33px}.catalog-top p{margin-top:10px}.catalog-toolbar{align-items:flex-start;flex-direction:column}.catalog-toolbar>div{width:100%;flex-wrap:wrap}.search-box{flex:1;min-width:180px}.sort-box{flex:1}.sort-box select{width:100%}.catalog-main .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.compare-bar-inner{flex-wrap:wrap;gap:8px}.compare-bar-inner>div:first-child{margin-right:auto}.compare-bar .button{width:100%}.compare-dialog{padding:25px}.compare-dialog h2{font-size:31px}}
 @media(max-width:500px){.catalog-main .product-grid{grid-template-columns:1fr}.product-art{height:235px}}
 @media(prefers-reduced-motion:reduce){.intro-flower{animation:none}}
+
+/* Clearer shopping controls and soft card entrances */
+.catalog-intro{background:linear-gradient(125deg,#f4f1e9,#eeeee3)}
+.catalog-intro h1{max-width:750px}
+.intro-flower{color:#cbd9c8;font-size:170px}
+.catalog-section{padding:86px 0 110px}
+.catalog-top h2{font-size:49px}
+.catalog-top p{font-size:14px;max-width:400px}
+.filter-head h3{font-size:17px}
+.filter-group legend{font-size:14px}
+.filter-option{font-size:13px;min-height:35px;transition:color .2s,transform .2s}
+.filter-option:hover{color:var(--forest-deep);transform:translateX(3px)}
+.filter-option input{width:17px;height:17px}
+.filter-option small{font-size:11px}
+.clear-filters{font-size:13px}
+.filter-help{padding:23px;background:linear-gradient(145deg,#eff4e9,#e8efe4)}
+.filter-help p{font-size:14px}
+.filter-help a{font-size:12px}
+.catalog-toolbar>span{font-size:13px}
+.search-box,.sort-box{height:45px}
+.search-box{width:245px}
+.search-box input,.sort-box select{font-size:12px}
+.sort-box select{padding-right:30px}
+.mobile-filter-button{font-size:12px;height:45px}
+.active-filters button{font-size:12px;padding:7px 12px}
+.catalog-note{font-size:12px}
+.empty-state h3{font-size:31px}
+.empty-state p{font-size:14px}
+@keyframes cardEnter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.catalog-main .product-card{animation:cardEnter .48s ease both}
+.catalog-main .product-card:nth-child(2){animation-delay:.05s}
+.catalog-main .product-card:nth-child(3){animation-delay:.1s}
+.catalog-main .product-card:nth-child(4){animation-delay:.15s}
+.catalog-main .product-card:nth-child(5){animation-delay:.2s}
+.catalog-main .product-card:nth-child(6){animation-delay:.25s}
+@keyframes compareRise{from{opacity:0;transform:translate(-50%,18px)}to{opacity:1;transform:translate(-50%,0)}}
+.compare-bar:not([hidden]){animation:compareRise .28s ease both}
+.compare-open .back-to-top{bottom:100px}
+.compare-bar-inner>div:first-child span{font-size:10px}
+.compare-bar-inner strong{font-size:13px}
+.compare-chips span,.compare-clear{font-size:11px}
+.compare-dialog h2{font-size:44px}
+.compare-dialog>p,.compare-dialog th,.compare-dialog td{font-size:13px}
+.compare-dialog th:not(:first-child){font-size:18px}
+@media(max-width:1110px){.catalog-top h2{font-size:44px}}
+@media(max-width:800px){.catalog-section{padding:70px 0 85px}}
+@media(max-width:620px){.catalog-top h2{font-size:40px}.catalog-top p{font-size:13px}.catalog-toolbar>span{font-size:12px}.catalog-toolbar>div{display:grid;grid-template-columns:1fr 1fr;gap:10px}.search-box{grid-column:1/-1;width:100%;min-width:0}.sort-box{grid-column:1}.sort-box select{width:100%}.mobile-filter-button{grid-column:2;justify-content:space-between}.filter-panel .filter-option{font-size:14px}.catalog-intro h1{font-size:50px}.compare-dialog h2{font-size:35px}.compare-open .back-to-top{bottom:143px}}
+@media(max-width:420px){.catalog-intro h1{font-size:46px}.catalog-top h2{font-size:37px}}
+@media(prefers-reduced-motion:reduce){.catalog-main .product-card,.compare-bar:not([hidden]){animation:none}}

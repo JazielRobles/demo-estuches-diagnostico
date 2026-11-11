@@ -46,3 +46,39 @@
 @media(max-width:1050px){.guide-hero-grid{gap:40px}.selector-grid{gap:40px}.faq-grid{gap:40px}}
 @media(max-width:800px){.guide-hero-grid{grid-template-columns:1fr}.guide-art{height:315px}.guide-art-circle{left:50%;right:auto;transform:translateX(-50%);width:300px;height:300px}.guide-art-caption{right:15%}.selector-grid,.faq-grid{grid-template-columns:1fr}.selector-mark{display:none}}
 @media(max-width:620px){.principle-grid{grid-template-columns:1fr}.principle-card{min-height:170px}.principle-card h3{margin-top:25px}.selector-card{padding:20px}.choice-grid,.tech-choices{grid-template-columns:1fr}.choice{min-height:60px}.selector-result{flex-direction:column;align-items:flex-start}.selector-result .button{width:100%}.guide-hero h1{font-size:43px}.guide-art{height:285px}}
+
+/* Guide as a calm, interactive editorial page */
+.guide-hero{background:linear-gradient(135deg,#edf2e9,#e5eee4)}
+.guide-hero h1{font-size:clamp(56px,5.4vw,77px)}
+.guide-hero p{font-size:16px}
+.guide-art-circle{background:radial-gradient(circle at 35% 28%,#e8f0e6,#d7e5d7 77%);animation:guideBreathe 8s ease-in-out infinite}
+.guide-art-card{animation:guideFloat 6s ease-in-out infinite}
+.guide-art-card strong{font-size:28px}
+.guide-art-card span{font-size:25px}
+.guide-art-caption{font-size:12px}
+@keyframes guideFloat{50%{transform:rotate(-4deg) translateY(-10px)}}
+@keyframes guideBreathe{50%{transform:scale(1.035)}}
+.principle-card{min-height:265px;padding:31px}
+.principle-card>span{font-size:11px}
+.principle-card h3{font-size:31px;margin-top:45px}
+.principle-card p{font-size:14px}
+.selector-copy h2{font-size:clamp(44px,4.6vw,62px)}
+.selector-copy p{font-size:16px}
+.selector-card{padding:37px;box-shadow:0 18px 43px rgba(40,65,45,.08)}
+.selector-card legend{font-size:15px;margin-bottom:16px}
+.choice{min-height:91px;padding:16px;position:relative}
+.choice strong{font-size:14px}
+.choice span{font-size:11px}
+.choice.active::after{content:"✓";position:absolute;right:12px;top:12px;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--forest);color:#fff;font-size:11px}
+.selector-result>span{font-size:13px}
+@keyframes resultRefresh{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.selector-result.changed{animation:resultRefresh .3s ease}
+.faq-grid h2{font-size:clamp(44px,4.6vw,61px)}
+.faq-grid>div:first-child>p{font-size:15px}
+.faq-list summary{font-size:16px;line-height:1.5}
+.faq-list p{font-size:14px}
+.faq-list details[open] p{animation:resultRefresh .3s ease}
+@media(max-width:1050px){.guide-hero h1{font-size:clamp(52px,5.7vw,70px)}.selector-card{padding:30px}.choice strong{font-size:13px}}
+@media(max-width:800px){.guide-hero h1{font-size:clamp(52px,7.5vw,70px)}.guide-art-circle{animation:none;left:50%;transform:translateX(-50%)}.principle-card{min-height:250px}}
+@media(max-width:620px){.guide-hero h1{font-size:clamp(45px,10.8vw,54px)}.guide-hero p{font-size:15px}.principle-card{min-height:195px}.principle-card h3{font-size:29px;margin-top:26px}.principle-card p{font-size:13px}.selector-copy h2{font-size:46px}.selector-copy p{font-size:14px}.selector-card{padding:23px}.choice{min-height:76px}.faq-grid h2{font-size:46px}.faq-list summary{font-size:15px}.faq-list p{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.guide-art-circle,.guide-art-card,.selector-result.changed,.faq-list details[open] p{animation:none}}

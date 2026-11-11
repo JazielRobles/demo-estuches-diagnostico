@@ -38,6 +38,7 @@
   }
   function renderCompare(){
     const count=state.compare.size;
+    document.body.classList.toggle("compare-open",count>0);
     $("#compare-bar").hidden=count===0;
     $("#compare-count").textContent=count+" "+(count===1?"opción":"opciones");
     $("#compare-chips").innerHTML=[...state.compare].map((id)=>'<span>'+Store.getProduct(id).name+'</span>').join("");
